@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="276a73b219364305953fabc2c5528934" Name="Diagram1">
+        <EntityTypeShape EntityType="JJSuperMarketModel.AccountGroup" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Bank" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.CompanyDetail" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Customer" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Journal" Width="1.5" PointX="16" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.JournalDetail" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.JournalMaster" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Ledger" Width="1.5" PointX="13.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.LedgerReport" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.LogInfo" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Payment" Width="1.5" PointX="16" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PaymentDetail" Width="1.5" PointX="18.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PaymentMaster" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Product" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Purchase" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PurchaseDetail" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PurchaseOrder" Width="1.5" PointX="6" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PurchaseOrderDetail" Width="1.5" PointX="8.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PurchaseReturn" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PurchaseReturnDetail" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Receipt" Width="1.5" PointX="16" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.ReceiptDetail" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.ReceiptMaster" Width="1.5" PointX="13.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Sale" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.SalesDetail" Width="1.5" PointX="5.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.SalesOrder" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.SalesOrderDetail" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.SalesReturn" Width="1.5" PointX="6" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.SalesReturnDetail" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Staff" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.StockGroup" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.StockReport" Width="1.5" PointX="11.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.Supplier" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.TaxMaster" Width="1.5" PointX="17.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.UnitsOfMeasurement" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.UserAccount" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.AutoGeneration" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.SoftValidation" Width="1.5" PointX="18.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.TextTranslation" Width="1.5" PointX="17.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.TmpProduct" Width="1.5" PointX="10.75" PointY="19.75" IsExpanded="true" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_AccountGroups_AG" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Sales_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesOrder_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesReturn_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Journal_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Payment_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Payment_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Receipt_Ledger" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Receipt_Ledger1" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PaymentDetails_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Products_StockGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Products_UnitsOfMeasurement" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseOrderDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseReturnDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesOrderDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesReturnDetails_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_StockReport_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_Purchase_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseDetails_Purchase" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseDetails_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseOrder_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseOrderDetails_PurchaseOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseOrderDetails_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseReturn_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseReturnDetails_PurchaseReturn" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseReturnDetails_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesDetails_Sales" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesDetails_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesOrderDetails_SalesOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesOrderDetails_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesReturnDetails_SalesReturn" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_SalesReturnDetails_UOM" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_StockGroups_StockGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_StockReport_UOM" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JJSuperMarketModel.PurchaseMaster" Width="1.5" PointX="3" PointY="29.25" />
+        <AssociationConnector Association="JJSuperMarketModel.FK_PurchaseMaster_Supplier" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="JJSuperMarket.Transaction.frmBackUp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:local="clr-namespace:JJSuperMarket.Transaction"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="600" d:DesignWidth="1100" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{DynamicResource FormHeadHeight}"/>
+            <RowDefinition Height="{DynamicResource FormBodyHeight}"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2" />
+        <!--#region Form Head -->
+        <Grid Grid.Row="0" Background="{DynamicResource bgFormHead}">
+            <StackPanel>
+                <Grid >
+                    <DatePicker x:Name="dtpP" Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" Margin="0,-5,945,4" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="155" Height="30"/>
+                    <TextBlock Foreground="{DynamicResource fgFormHead}" HorizontalAlignment="Center" TextAlignment="Center"  VerticalAlignment="Center" FontFamily="{DynamicResource ftfFormHead}" FontSize="{DynamicResource fnsFormHead}" Margin="435,0,435,8" Height="30" Width="230"><Run Text="Backup DataBase"/></TextBlock>
+
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Form Body-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1100"/>
+            </Grid.ColumnDefinitions>
+            <!--#region Form Left-->
+            <Grid Grid.Column="0" Margin="10,70,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+                <!--#region Form Design-->
+                <Grid Grid.Row="0" Margin="0,0,10,0"  >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="txtLocation" TextAlignment="Right"   FontWeight="Bold" FontSize="16"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="222,140,442,249">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel  Orientation="Horizontal">
+                                <materialDesign:PackIcon Grid.Column="0" Kind="AccountSearch" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                <TextBlock Text="Location [Except c:]" Height="24" FontWeight="Bold" />
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                    </TextBox>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Buttons-->
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="647,-283,147,313" Width="286">
+                        <Button Width="86" Height="30" x:Name="btnSearch" Content="SEARCH" Click="btnSearch_Click" Margin="5 5" />
+                        <Button Width="80" Height="30"  x:Name="btnSave" Content="Backup
+                                " Click="btnSave_Click" Margin="5 5" />
+                        <Button Width="80" Height="30" x:Name="btnClear" Content="CLEAR" Click="btnClear_Click"  Margin="5 5" />
+                    </StackPanel>
+                </Grid>
+                <!--#endregion-->
+
+            </Grid>
+            <!--#endregion-->
+            <!--#region Form Right-->
+            <!--<Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="159"/>
+                    <RowDefinition Height="411"/>
+                </Grid.RowDefinitions>
+
+                -->
+            <!--#region Search Box-->
+            <!--<Grid Grid.Row="0" Margin="0,0,0,55" Grid.RowSpan="2">
+
+                </Grid>-->
+            <!--#endregion-->
+
+            <!--#region DataGrid-->
+
+            <!--#endregion-->
+            <!--
+            </Grid>-->
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>

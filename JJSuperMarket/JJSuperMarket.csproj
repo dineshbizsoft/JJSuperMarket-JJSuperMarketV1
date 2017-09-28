@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5727C3DD-1F25-4D71-AA68-0FF96E5A4255}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JJSuperMarket</RootNamespace>
+    <AssemblyName>JJSuperMarket</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo only.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataGridExtensions, Version=1.0.36.0, Culture=neutral, PublicKeyToken=43de855f87de903a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataGridExtensions.1.0.36.0\lib\net40-Client\DataGridExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.MahApps.0.0.10\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.3.0.823, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.3.0.823\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.DataVisualization.3.5.50211.1\lib\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AccountGroup.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoGeneration.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\AnotherCommandImplementation.cs" />
+    <Compile Include="Domain\AppLib.cs" />
+    <Compile Include="Domain\DemoItem.cs" />
+    <Compile Include="Domain\DialogsViewModel.cs" />
+    <Compile Include="Domain\FutureDateValidationRule.cs" />
+    <Compile Include="Domain\ListFieldsViewModel.cs" />
+    <Compile Include="Domain\NotEmptyValidationRule.cs" />
+    <Compile Include="Domain\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="Domain\Sample4Dialog.xaml.cs">
+      <DependentUpon>Sample4Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\SampleDialog.xaml.cs">
+      <DependentUpon>SampleDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\SampleDialogViewModel.cs" />
+    <Compile Include="Domain\SampleMessageDialog.xaml.cs">
+      <DependentUpon>SampleMessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\SampleProgressDialog.xaml.cs">
+      <DependentUpon>SampleProgressDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\SelectableViewModel.cs" />
+    <Compile Include="Domain\SimpleDataTemplateSelector.cs" />
+    <Compile Include="Domain\SimpleDateValidationRule.cs" />
+    <Compile Include="Domain\TextFieldsViewModel.cs" />
+    <Compile Include="Domain\TreesViewModel.cs" />
+    <Compile Include="frmHome.xaml.cs">
+      <DependentUpon>frmHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.xaml.cs">
+      <DependentUpon>frmLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserHome.xaml.cs">
+      <DependentUpon>frmUserHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmWelcome.xaml.cs">
+      <DependentUpon>frmWelcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JJSuperMarket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JJSuperMarketDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JJSuperMarketDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Journal.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JournalDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JournalMaster.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ledger.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LedgerReport.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogInfo.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmCompanyDetails.xaml.cs">
+      <DependentUpon>frmCompanyDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmCustomer.xaml.cs">
+      <DependentUpon>frmCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmProducts.xaml.cs">
+      <DependentUpon>frmProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmPurchaseMaster.xaml.cs">
+      <DependentUpon>frmPurchaseMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmStockGroup.xaml.cs">
+      <DependentUpon>frmStockGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmSupplier.xaml.cs">
+      <DependentUpon>frmSupplier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmUOM.xaml.cs">
+      <DependentUpon>frmUOM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentMaster.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Points.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseMaster.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturn.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseReturnDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptMaster.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmCateogeryWiseSalesReport.xaml.cs">
+      <DependentUpon>frmCateogeryWiseSalesReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmCustomerLedger.xaml.cs">
+      <DependentUpon>frmCustomerLedger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmItemWiseStockReport.xaml.cs">
+      <DependentUpon>frmItemWiseStockReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmReOrderLevel.xaml.cs">
+      <DependentUpon>frmReOrderLevel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PayableReport.xaml.cs">
+      <DependentUpon>PayableReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProductWiseSaleReport.xaml.cs">
+      <DependentUpon>ProductWiseSaleReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReceivableReport.xaml.cs">
+      <DependentUpon>ReceivableReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmCustomerPoint.xaml.cs">
+      <DependentUpon>frmCustomerPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmPurchaseMasterReport.xaml.cs">
+      <DependentUpon>frmPurchaseMasterReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmPurchaseMasterSearch.xaml.cs">
+      <DependentUpon>frmPurchaseMasterSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmPurchaseReport.xaml.cs">
+      <DependentUpon>frmPurchaseReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmPurchaseReturnReport.xaml.cs">
+      <DependentUpon>frmPurchaseReturnReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmPurchaseSearch.xaml.cs">
+      <DependentUpon>frmPurchaseSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmSalesReport.xaml.cs">
+      <DependentUpon>frmSalesReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmSalesReturnSearchNew.xaml.cs">
+      <DependentUpon>frmSalesReturnSearchNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Transaction\frmSalesSearch.xaml.cs">
+      <DependentUpon>frmSalesSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturn.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReturnDetail.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftValidation.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockDetails.cs" />
+    <Compile Include="StockGroup.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockReport.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaxMaster.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TextTranslation.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TmpProduct.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmBackUp.xaml.cs">
+      <DependentUpon>frmBackUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmPayment.xaml.cs">
+      <DependentUpon>frmPayment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmProductDetails.xaml.cs">
+      <DependentUpon>frmProductDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmPurchaseNew.xaml.cs">
+      <DependentUpon>frmPurchaseNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmPurchaseReturnNew.xaml.cs">
+      <DependentUpon>frmPurchaseReturnNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmPurchaseReturnSearch.xaml.cs">
+      <DependentUpon>frmPurchaseReturnSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmReceipt.xaml.cs">
+      <DependentUpon>frmReceipt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmSales.xaml.cs">
+      <DependentUpon>frmSales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmSalesReturnNew.xaml.cs">
+      <DependentUpon>frmSalesReturnNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmSalesReturnReport.xaml.cs">
+      <DependentUpon>frmSalesReturnReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmSalesReturnSearch.xaml.cs">
+      <DependentUpon>frmSalesReturnSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnitsOfMeasurement.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>JJSuperMarket.tt</DependentUpon>
+    </Compile>
+    <Page Include="Domain\Sample4Dialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Domain\SampleDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Domain\SampleMessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Domain\SampleProgressDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmHome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmLogin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmUserHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmWelcome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JJSuperMarket.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JJSuperMarket.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JJSuperMarket.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JJSuperMarket.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Master\frmCompanyDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\frmCustomer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\frmProducts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\frmPurchaseMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\frmStockGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\frmSupplier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Master\frmUOM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\frmCateogeryWiseSalesReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\frmCustomerLedger.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\frmItemWiseStockReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\frmReOrderLevel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\PayableReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\ProductWiseSaleReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\ReceivableReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Transaction\frmCustomerPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Transaction\frmPurchaseMasterReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Transaction\frmPurchaseMasterSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Transaction\frmPurchaseReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Transaction\frmPurchaseReturnReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Transaction\frmPurchaseSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Transaction\frmSalesReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Transaction\frmSalesReturnSearchNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Transaction\frmSalesSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmBackUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmPayment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmProductDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmPurchaseNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmPurchaseReturnNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmPurchaseReturnSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmReceipt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmSales.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmSalesReturnNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmSalesReturnReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmSalesReturnSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Master\rptAccountGroupReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptBankReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptCustomerReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptLedger.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptProductReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptStaffReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptStockReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptSupplierReport.rdlc" />
+    <EmbeddedResource Include="Reports\Master\rptUomReport.rdlc" />
+    <EmbeddedResource Include="Reports\rptCashLedger.rdlc" />
+    <EmbeddedResource Include="Reports\rptDayBook.rdlc" />
+    <EmbeddedResource Include="Reports\rptProductSaleReport.rdlc" />
+    <EmbeddedResource Include="Reports\rptStockReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptOverAllSalesReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPaymentReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseMasterReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseOrderDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseOrderReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseReturn.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptPurchaseReturnDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptReceiptReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptSales.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptSalesDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptSalesOrderDetails.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptSalesOrderReport.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptSalesReturn.rdlc" />
+    <EmbeddedResource Include="Reports\Transaction\rptSalesReturnDetails.rdlc" />
+    <EntityDeploy Include="JJSuperMarket.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JJSuperMarket.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="JJSuperMarket.edmx.diagram">
+      <DependentUpon>JJSuperMarket.edmx</DependentUpon>
+    </None>
+    <None Include="JJSuperMarketDataSet.xsc">
+      <DependentUpon>JJSuperMarketDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="JJSuperMarketDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>JJSuperMarketDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="JJSuperMarketDataSet.xss">
+      <DependentUpon>JJSuperMarketDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo only.ico" />
+    <Resource Include="Image\denariusoft-login-page_0007_Layer-16.png" />
+    <Resource Include="Image\frame.png" />
+    <Resource Include="Image\ic_launcher-web.png" />
+    <Resource Include="Image\JJ SUPERMARKET LOGO approved-08.png" />
+    <Resource Include="Image\logo only.ico" />
+    <Resource Include="Image\logo only.png" />
+    <Content Include="JJSuperMarket.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JJSuperMarket.edmx</DependentUpon>
+      <LastGenOutput>JJSuperMarket.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="JJSuperMarket.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JJSuperMarket.edmx</DependentUpon>
+      <LastGenOutput>JJSuperMarket.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

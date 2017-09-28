@@ -1,0 +1,3186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JJSuperMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountGroups">
+          <Key>
+            <PropertyRef Name="AccountGroupId" />
+          </Key>
+          <Property Name="AccountGroupId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountGroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="155" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Under" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProfitAndLoss" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'JJSuperMarket.dbo.AutoGeneration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AutoGeneration">
+          <Key>
+            <PropertyRef Name="AGNID" />
+          </Key>
+          <Property Name="AGNID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AGNCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+          <Property Name="prefix" Type="nvarchar" MaxLength="10" />
+          <Property Name="KeySize" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="StartFrom" Type="decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="155" />
+          <Property Name="AcType" Type="nvarchar" MaxLength="50" />
+          <Property Name="MCRCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="CPerson1" Type="nvarchar" MaxLength="155" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CPerson2" Type="nvarchar" MaxLength="155" />
+          <Property Name="MobileNo2" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CompanyDetails">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="150" />
+          <Property Name="Address4" Type="nvarchar" MaxLength="150" />
+          <Property Name="Pincode" Type="nvarchar" MaxLength="150" />
+          <Property Name="PhNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cst" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" />
+          <Property Name="MinAmount" Type="float" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="155" />
+          <Property Name="AddressLine" Type="nvarchar" MaxLength="3000" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CST" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="float" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="decimal" Precision="20" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ledgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="JournalDate" Type="datetime" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="500" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="500" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="DrAmt" Type="float" />
+        </EntityType>
+        <EntityType Name="JournalDetails">
+          <Key>
+            <PropertyRef Name="JDId" />
+          </Key>
+          <Property Name="JDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JDCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="JournalMaster">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JournalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="JournalDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="nvarchar" MaxLength="5" />
+          <Property Name="CreditLimit" Type="nvarchar" MaxLength="10" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CrAmt" Type="float" />
+          <Property Name="DrAmt" Type="float" />
+          <Property Name="AccCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LedgerReport">
+          <Key>
+            <PropertyRef Name="LReportId" />
+          </Key>
+          <Property Name="LReportId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LReportCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="VoucherType" Type="nvarchar" MaxLength="20" />
+          <Property Name="LDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="100" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="255" />
+          <Property Name="DRAmount" Type="float" />
+          <Property Name="CRAmount" Type="float" />
+          <Property Name="FU1" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU2" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU3" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="Error" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerCodeTo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="155" />
+          <Property Name="LedgerCodeFrom" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PayAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="100" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="150" />
+          <Property Name="ChequeDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PDCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PurchaseId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalesRId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseRate" Type="float" />
+          <Property Name="MRP" Type="float" />
+          <Property Name="SellingRate" Type="float" />
+          <Property Name="UOMCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ReOrderLevel" Type="float" />
+          <Property Name="OpQty" Type="float" />
+          <Property Name="ProductImage" Type="image" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseType" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="ItemAmount" Type="float" />
+        </EntityType>
+        <EntityType Name="PurchaseDetails">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PurchaseId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="POCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <EntityType Name="PurchaseMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseType" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="150" />
+          <Property Name="ItemAmount" Type="float" />
+          <Property Name="NoOfProducts" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="POId" />
+          </Key>
+          <Property Name="POId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PODate" Type="datetime" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="ItemAmount" Type="float" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetails">
+          <Key>
+            <PropertyRef Name="PODId" />
+          </Key>
+          <Property Name="PODId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PODCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="POId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <EntityType Name="PurchaseReturn">
+          <Key>
+            <PropertyRef Name="PRId" />
+          </Key>
+          <Property Name="PRId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PRType" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="ItemAmount" Type="float" />
+        </EntityType>
+        <EntityType Name="PurchaseReturnDetails">
+          <Key>
+            <PropertyRef Name="PRDId" />
+          </Key>
+          <Property Name="PRDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="PRId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReceiptCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="ReceiptFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="LedgerCodeFrom" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="nvarchar" MaxLength="155" />
+          <Property Name="ReceiptTo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="100" />
+          <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExtraCharge" Type="float" />
+          <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChequeDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ReceiptDetails">
+          <Key>
+            <PropertyRef Name="RDId" />
+          </Key>
+          <Property Name="RDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RDCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiptCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>
+        <EntityType Name="ReceiptMaster">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="PurchaseRId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalesId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiptAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="SalesId" />
+          </Key>
+          <Property Name="SalesId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalesCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SalesDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalesType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ItemAmount" Type="float" />
+        </EntityType>
+        <EntityType Name="SalesDetails">
+          <Key>
+            <PropertyRef Name="SDId" />
+          </Key>
+          <Property Name="SDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SalesId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SOCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <EntityType Name="SalesOrder">
+          <Key>
+            <PropertyRef Name="SOId" />
+          </Key>
+          <Property Name="SOId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SOCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SODate" Type="datetime" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="ItemAmount" Type="float" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetails">
+          <Key>
+            <PropertyRef Name="SODId" />
+          </Key>
+          <Property Name="SODId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SODCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SOId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <EntityType Name="SalesReturn">
+          <Key>
+            <PropertyRef Name="SRId" />
+          </Key>
+          <Property Name="SRId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SRCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SRDate" Type="datetime" />
+          <Property Name="LedgerCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SRType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extra" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="555" />
+          <Property Name="ItemAmount" Type="float" />
+          <Property Name="InvoiceNo" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="SalesReturnDetails">
+          <Key>
+            <PropertyRef Name="SRDId" />
+          </Key>
+          <Property Name="SRDId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SRDCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="SRId" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalesCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="UOM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="nvarchar" MaxLength="20" />
+          <Property Name="DisPer" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'JJSuperMarket.dbo.SoftValidation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SoftValidation">
+          <Key>
+            <PropertyRef Name="SVId" />
+          </Key>
+          <Property Name="SVId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SVCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="AvailableTimes" Type="float" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="30" />
+          <Property Name="DOJ" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="MailId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StockGroups">
+          <Key>
+            <PropertyRef Name="StockGroupId" />
+          </Key>
+          <Property Name="StockGroupId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockGroupCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="155" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Under" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="StockReport">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VoucherType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDate" Type="datetime" />
+          <Property Name="ProductCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Qunatity" Type="float" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="UOMCode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPercentage" Type="float" />
+          <Property Name="FU1" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU2" Type="nvarchar" MaxLength="100" />
+          <Property Name="FU3" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="LedgerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="155" />
+          <Property Name="AddressLine" Type="nvarchar" MaxLength="3000" />
+          <Property Name="TelePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TinNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CST" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditDays" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="float" />
+        </EntityType>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxCode" Type="varchar" MaxLength="20" />
+          <Property Name="TaxValue" Type="float" />
+          <Property Name="Narration" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'JJSuperMarket.dbo.TextTranslation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TextTranslation">
+          <Key>
+            <PropertyRef Name="TTId" />
+          </Key>
+          <Property Name="TTId" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TTCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TTEnglish" Type="nvarchar" MaxLength="200" />
+          <Property Name="TTTamil" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'JJSuperMarket.dbo.TmpProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TmpProduct">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BarCode" Type="int" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" />
+          <Property Name="MRP" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="50" />
+          <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ReorderLevel" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="UnitsOfMeasurement">
+          <Key>
+            <PropertyRef Name="UOMId" />
+          </Key>
+          <Property Name="UOMId" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UOMCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="UOMSymbol" Type="nvarchar" MaxLength="20" />
+          <Property Name="formalname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="decimal" Precision="20" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_AccountGroups_AG">
+          <End Role="AccountGroups" Type="Self.AccountGroups" Multiplicity="0..1" />
+          <End Role="AccountGroups1" Type="Self.AccountGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroups">
+              <PropertyRef Name="AccountGroupId" />
+            </Principal>
+            <Dependent Role="AccountGroups1">
+              <PropertyRef Name="Under" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="ledgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="LedgerCodeTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_ToTable">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="LedgerCodeFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_StockGroup">
+          <End Role="StockGroups" Type="Self.StockGroups" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockGroups">
+              <PropertyRef Name="StockGroupId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="GroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_UnitsOfMeasurement">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="UOMCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetails_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="PurchaseDetails" Type="Self.PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetails_Purchase">
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="0..1" />
+          <End Role="PurchaseDetails" Type="Self.PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="PurchaseId" />
+            </Principal>
+            <Dependent Role="PurchaseDetails">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="PurchaseDetails" Type="Self.PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="PurchaseDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseMaster_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="PurchaseMaster" Type="Self.PurchaseMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="PurchaseMaster">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetails_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetails" Type="Self.PurchaseOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetails_PurchaseOrder">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetails" Type="Self.PurchaseOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="POId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails">
+              <PropertyRef Name="POId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetails" Type="Self.PurchaseOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturn_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="PurchaseReturn" Type="Self.PurchaseReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="PurchaseReturn">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturnDetails_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="PurchaseReturnDetails" Type="Self.PurchaseReturnDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseReturnDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturnDetails_PurchaseReturn">
+          <End Role="PurchaseReturn" Type="Self.PurchaseReturn" Multiplicity="0..1" />
+          <End Role="PurchaseReturnDetails" Type="Self.PurchaseReturnDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseReturn">
+              <PropertyRef Name="PRId" />
+            </Principal>
+            <Dependent Role="PurchaseReturnDetails">
+              <PropertyRef Name="PRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturnDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="PurchaseReturnDetails" Type="Self.PurchaseReturnDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="PurchaseReturnDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipt_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="LedgerCodeFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipt_Ledger1">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="ReceiptTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="SalesDetails" Type="Self.SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_Sales">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="0..1" />
+          <End Role="SalesDetails" Type="Self.SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="SalesId" />
+            </Principal>
+            <Dependent Role="SalesDetails">
+              <PropertyRef Name="SalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="SalesDetails" Type="Self.SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="SalesDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="SalesOrder">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderDetails_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="SalesOrderDetails" Type="Self.SalesOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderDetails_SalesOrder">
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="0..1" />
+          <End Role="SalesOrderDetails" Type="Self.SalesOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder">
+              <PropertyRef Name="SOId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetails">
+              <PropertyRef Name="SOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="SalesOrderDetails" Type="Self.SalesOrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturn_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="SalesReturn" Type="Self.SalesReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="SalesReturn">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturnDetails_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="SalesReturnDetails" Type="Self.SalesReturnDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesReturnDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturnDetails_SalesReturn">
+          <End Role="SalesReturn" Type="Self.SalesReturn" Multiplicity="0..1" />
+          <End Role="SalesReturnDetails" Type="Self.SalesReturnDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesReturn">
+              <PropertyRef Name="SRId" />
+            </Principal>
+            <Dependent Role="SalesReturnDetails">
+              <PropertyRef Name="SRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturnDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="SalesReturnDetails" Type="Self.SalesReturnDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="SalesReturnDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockGroups_StockGroups">
+          <End Role="StockGroups" Type="Self.StockGroups" Multiplicity="0..1" />
+          <End Role="StockGroups1" Type="Self.StockGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockGroups">
+              <PropertyRef Name="StockGroupId" />
+            </Principal>
+            <Dependent Role="StockGroups1">
+              <PropertyRef Name="Under" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockReport_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="StockReport" Type="Self.StockReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="StockReport">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockReport_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="StockReport" Type="Self.StockReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="StockReport">
+              <PropertyRef Name="UOMCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JJSuperMarketModelStoreContainer">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalDetails" EntityType="Self.JournalDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalMaster" EntityType="Self.JournalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ledger" EntityType="Self.Ledger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedgerReport" EntityType="Self.LedgerReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogInfo" EntityType="Self.LogInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMaster" EntityType="Self.PaymentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseMaster" EntityType="Self.PurchaseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderDetails" EntityType="Self.PurchaseOrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseReturn" EntityType="Self.PurchaseReturn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseReturnDetails" EntityType="Self.PurchaseReturnDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptMaster" EntityType="Self.ReceiptMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesDetails" EntityType="Self.SalesDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrder" EntityType="Self.SalesOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesReturn" EntityType="Self.SalesReturn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesReturnDetails" EntityType="Self.SalesReturnDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockGroups" EntityType="Self.StockGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockReport" EntityType="Self.StockReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxMaster" EntityType="Self.TaxMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitsOfMeasurement" EntityType="Self.UnitsOfMeasurement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoGeneration" EntityType="Self.AutoGeneration" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AutoGeneration].[AGNID] AS [AGNID], 
+    [AutoGeneration].[AGNCode] AS [AGNCode], 
+    [AutoGeneration].[TableName] AS [TableName], 
+    [AutoGeneration].[prefix] AS [prefix], 
+    [AutoGeneration].[KeySize] AS [KeySize], 
+    [AutoGeneration].[StartFrom] AS [StartFrom]
+    FROM [dbo].[AutoGeneration] AS [AutoGeneration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SoftValidation" EntityType="Self.SoftValidation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SoftValidation].[SVId] AS [SVId], 
+    [SoftValidation].[SVCode] AS [SVCode], 
+    [SoftValidation].[AvailableTimes] AS [AvailableTimes]
+    FROM [dbo].[SoftValidation] AS [SoftValidation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TextTranslation" EntityType="Self.TextTranslation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TextTranslation].[TTId] AS [TTId], 
+    [TextTranslation].[TTCode] AS [TTCode], 
+    [TextTranslation].[TTEnglish] AS [TTEnglish], 
+    [TextTranslation].[TTTamil] AS [TTTamil]
+    FROM [dbo].[TextTranslation] AS [TextTranslation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TmpProduct" EntityType="Self.TmpProduct" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TmpProduct].[Sno] AS [Sno], 
+    [TmpProduct].[BarCode] AS [BarCode], 
+    [TmpProduct].[Product] AS [Product], 
+    [TmpProduct].[MRP] AS [MRP], 
+    [TmpProduct].[Qty] AS [Qty], 
+    [TmpProduct].[UOM] AS [UOM], 
+    [TmpProduct].[SellingPrice] AS [SellingPrice], 
+    [TmpProduct].[ReorderLevel] AS [ReorderLevel]
+    FROM [dbo].[TmpProduct] AS [TmpProduct]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AccountGroups_AG" Association="Self.FK_AccountGroups_AG">
+            <End Role="AccountGroups" EntitySet="AccountGroups" />
+            <End Role="AccountGroups1" EntitySet="AccountGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Ledger" Association="Self.FK_Journal_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Ledger" Association="Self.FK_Payment_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_ToTable" Association="Self.FK_Payment_ToTable">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Payment" Association="Self.FK_PaymentDetails_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_StockGroup" Association="Self.FK_Products_StockGroup">
+            <End Role="StockGroups" EntitySet="StockGroups" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_UnitsOfMeasurement" Association="Self.FK_Products_UnitsOfMeasurement">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Supplier" Association="Self.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetails_Product" Association="Self.FK_PurchaseDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseDetails" EntitySet="PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetails_Purchase" Association="Self.FK_PurchaseDetails_Purchase">
+            <End Role="Purchase" EntitySet="Purchase" />
+            <End Role="PurchaseDetails" EntitySet="PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetails_UOM" Association="Self.FK_PurchaseDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="PurchaseDetails" EntitySet="PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseMaster_Supplier" Association="Self.FK_PurchaseMaster_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="PurchaseMaster" EntitySet="PurchaseMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetails_Product" Association="Self.FK_PurchaseOrderDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseOrderDetails" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetails_PurchaseOrder" Association="Self.FK_PurchaseOrderDetails_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="PurchaseOrderDetails" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetails_UOM" Association="Self.FK_PurchaseOrderDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="PurchaseOrderDetails" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturn_Supplier" Association="Self.FK_PurchaseReturn_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="PurchaseReturn" EntitySet="PurchaseReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturnDetails_Product" Association="Self.FK_PurchaseReturnDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseReturnDetails" EntitySet="PurchaseReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturnDetails_PurchaseReturn" Association="Self.FK_PurchaseReturnDetails_PurchaseReturn">
+            <End Role="PurchaseReturn" EntitySet="PurchaseReturn" />
+            <End Role="PurchaseReturnDetails" EntitySet="PurchaseReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturnDetails_UOM" Association="Self.FK_PurchaseReturnDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="PurchaseReturnDetails" EntitySet="PurchaseReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Ledger" Association="Self.FK_Receipt_Ledger">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Ledger1" Association="Self.FK_Receipt_Ledger1">
+            <End Role="Ledger" EntitySet="Ledger" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_Product" Association="Self.FK_SalesDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SalesDetails" EntitySet="SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_Sales" Association="Self.FK_SalesDetails_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SalesDetails" EntitySet="SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_UOM" Association="Self.FK_SalesDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="SalesDetails" EntitySet="SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_Customer" Association="Self.FK_SalesOrder_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SalesOrder" EntitySet="SalesOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetails_Product" Association="Self.FK_SalesOrderDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SalesOrderDetails" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetails_SalesOrder" Association="Self.FK_SalesOrderDetails_SalesOrder">
+            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SalesOrderDetails" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetails_UOM" Association="Self.FK_SalesOrderDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="SalesOrderDetails" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturn_Customer" Association="Self.FK_SalesReturn_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SalesReturn" EntitySet="SalesReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturnDetails_Products" Association="Self.FK_SalesReturnDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturnDetails_SalesReturn" Association="Self.FK_SalesReturnDetails_SalesReturn">
+            <End Role="SalesReturn" EntitySet="SalesReturn" />
+            <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturnDetails_UOM" Association="Self.FK_SalesReturnDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockGroups_StockGroups" Association="Self.FK_StockGroups_StockGroups">
+            <End Role="StockGroups" EntitySet="StockGroups" />
+            <End Role="StockGroups1" EntitySet="StockGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockReport_Products" Association="Self.FK_StockReport_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="StockReport" EntitySet="StockReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockReport_UOM" Association="Self.FK_StockReport_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurement" />
+            <End Role="StockReport" EntitySet="StockReport" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JJSuperMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="AccountGroupId" />
+          </Key>
+          <Property Name="AccountGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountGroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Under" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProfitAndLoss" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountGroups1" Relationship="Self.FK_AccountGroups_AG" FromRole="AccountGroups" ToRole="AccountGroups1" />
+          <NavigationProperty Name="AccountGroup1" Relationship="Self.FK_AccountGroups_AG" FromRole="AccountGroups1" ToRole="AccountGroups" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="AcType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MCRCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CPerson1" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CPerson2" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Address4" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PhNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MinAmount" Type="Double" />
+          <Property Name="Amount" Type="Double" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="Double" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Customer" FromRole="Customer" ToRole="Sales" />
+          <NavigationProperty Name="SalesOrders" Relationship="Self.FK_SalesOrder_Customer" FromRole="Customer" ToRole="SalesOrder" />
+          <NavigationProperty Name="SalesReturns" Relationship="Self.FK_SalesReturn_Customer" FromRole="Customer" ToRole="SalesReturn" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="Decimal" Precision="20" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JournalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ledgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="JournalDate" Type="DateTime" Precision="3" />
+          <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="DrAmt" Type="Double" />
+          <NavigationProperty Name="Ledger" Relationship="Self.FK_Journal_Ledger" FromRole="Journal" ToRole="Ledger" />
+        </EntityType>
+        <EntityType Name="JournalDetail">
+          <Key>
+            <PropertyRef Name="JDId" />
+          </Key>
+          <Property Name="JDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JDCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JournalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="JournalMaster">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JournalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JournalDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Ledger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CrAmt" Type="Double" />
+          <Property Name="DrAmt" Type="Double" />
+          <Property Name="AccCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Journals" Relationship="Self.FK_Journal_Ledger" FromRole="Ledger" ToRole="Journal" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Ledger" FromRole="Ledger" ToRole="Payment" />
+          <NavigationProperty Name="Payments1" Relationship="Self.FK_Payment_ToTable" FromRole="Ledger" ToRole="Payment" />
+          <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Ledger" FromRole="Ledger" ToRole="Receipt" />
+          <NavigationProperty Name="Receipts1" Relationship="Self.FK_Receipt_Ledger1" FromRole="Ledger" ToRole="Receipt" />
+        </EntityType>
+        <EntityType Name="LedgerReport">
+          <Key>
+            <PropertyRef Name="LReportId" />
+          </Key>
+          <Property Name="LReportId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LReportCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Particulars" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Narration" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DRAmount" Type="Double" />
+          <Property Name="CRAmount" Type="Double" />
+          <Property Name="FU1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDate" Type="DateTime" Precision="3" />
+          <Property Name="Error" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCodeTo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCodeFrom" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PayAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Double" />
+          <Property Name="ChequeNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ledger" Relationship="Self.FK_Payment_Ledger" FromRole="Payment" ToRole="Ledger" />
+          <NavigationProperty Name="Ledger1" Relationship="Self.FK_Payment_ToTable" FromRole="Payment" ToRole="Ledger" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetails_Payment" FromRole="Payment" ToRole="PaymentDetails" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PDCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_PaymentDetails_Payment" FromRole="PaymentDetails" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalesRId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseRate" Type="Double" />
+          <Property Name="MRP" Type="Double" />
+          <Property Name="SellingRate" Type="Double" />
+          <Property Name="UOMCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReOrderLevel" Type="Double" />
+          <Property Name="OpQty" Type="Double" />
+          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="StockGroup" Relationship="Self.FK_Products_StockGroup" FromRole="Products" ToRole="StockGroups" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_Products_UnitsOfMeasurement" FromRole="Products" ToRole="UnitsOfMeasurement" />
+          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetails_Product" FromRole="Products" ToRole="PurchaseDetails" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK_PurchaseOrderDetails_Product" FromRole="Products" ToRole="PurchaseOrderDetails" />
+          <NavigationProperty Name="PurchaseReturnDetails" Relationship="Self.FK_PurchaseReturnDetails_Product" FromRole="Products" ToRole="PurchaseReturnDetails" />
+          <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetails_Product" FromRole="Products" ToRole="SalesDetails" />
+          <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetails_Product" FromRole="Products" ToRole="SalesOrderDetails" />
+          <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK_SalesReturnDetails_Products" FromRole="Products" ToRole="SalesReturnDetails" />
+          <NavigationProperty Name="StockReports" Relationship="Self.FK_StockReport_Products" FromRole="Products" ToRole="StockReport" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="ItemAmount" Type="Double" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Purchase_Supplier" FromRole="Purchase" ToRole="Supplier" />
+          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetails_Purchase" FromRole="Purchase" ToRole="PurchaseDetails" />
+        </EntityType>
+        <EntityType Name="PurchaseDetail">
+          <Key>
+            <PropertyRef Name="PDId" />
+          </Key>
+          <Property Name="PDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="POCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseDetails_Product" FromRole="PurchaseDetails" ToRole="Products" />
+          <NavigationProperty Name="Purchase" Relationship="Self.FK_PurchaseDetails_Purchase" FromRole="PurchaseDetails" ToRole="Purchase" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_PurchaseDetails_UOM" FromRole="PurchaseDetails" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="POId" />
+          </Key>
+          <Property Name="POId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PODate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="ItemAmount" Type="Double" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="PurchaseOrder" ToRole="Supplier" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK_PurchaseOrderDetails_PurchaseOrder" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetails" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="PODId" />
+          </Key>
+          <Property Name="PODId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PODCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="POId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseOrderDetails_Product" FromRole="PurchaseOrderDetails" ToRole="Products" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrderDetails_PurchaseOrder" FromRole="PurchaseOrderDetails" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_PurchaseOrderDetails_UOM" FromRole="PurchaseOrderDetails" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="PurchaseReturn">
+          <Key>
+            <PropertyRef Name="PRId" />
+          </Key>
+          <Property Name="PRId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PRDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PRType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="ItemAmount" Type="Double" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseReturn_Supplier" FromRole="PurchaseReturn" ToRole="Supplier" />
+          <NavigationProperty Name="PurchaseReturnDetails" Relationship="Self.FK_PurchaseReturnDetails_PurchaseReturn" FromRole="PurchaseReturn" ToRole="PurchaseReturnDetails" />
+        </EntityType>
+        <EntityType Name="PurchaseReturnDetail">
+          <Key>
+            <PropertyRef Name="PRDId" />
+          </Key>
+          <Property Name="PRDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PRId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseReturnDetails_Product" FromRole="PurchaseReturnDetails" ToRole="Products" />
+          <NavigationProperty Name="PurchaseReturn" Relationship="Self.FK_PurchaseReturnDetails_PurchaseReturn" FromRole="PurchaseReturnDetails" ToRole="PurchaseReturn" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_PurchaseReturnDetails_UOM" FromRole="PurchaseReturnDetails" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiptCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiptFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerCodeFrom" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptTo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraCharge" Type="Double" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ledger" Relationship="Self.FK_Receipt_Ledger" FromRole="Receipt" ToRole="Ledger" />
+          <NavigationProperty Name="Ledger1" Relationship="Self.FK_Receipt_Ledger1" FromRole="Receipt" ToRole="Ledger" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="RDId" />
+          </Key>
+          <Property Name="RDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RDCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RefType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+        </EntityType>
+        <EntityType Name="ReceiptMaster">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseRId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SupplierId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalesId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CustomerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReceiptMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="SalesId" />
+          </Key>
+          <Property Name="SalesId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalesCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SalesDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalesType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ItemAmount" Type="Double" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Sales_Customer" FromRole="Sales" ToRole="Customer" />
+          <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetails_Sales" FromRole="Sales" ToRole="SalesDetails" />
+        </EntityType>
+        <EntityType Name="SalesDetail">
+          <Key>
+            <PropertyRef Name="SDId" />
+          </Key>
+          <Property Name="SDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SalesId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SOCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SalesDetails_Product" FromRole="SalesDetails" ToRole="Products" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK_SalesDetails_Sales" FromRole="SalesDetails" ToRole="Sales" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_SalesDetails_UOM" FromRole="SalesDetails" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="SalesOrder">
+          <Key>
+            <PropertyRef Name="SOId" />
+          </Key>
+          <Property Name="SOId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SOCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SODate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="ItemAmount" Type="Double" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_SalesOrder_Customer" FromRole="SalesOrder" ToRole="Customer" />
+          <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetails_SalesOrder" FromRole="SalesOrder" ToRole="SalesOrderDetails" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetail">
+          <Key>
+            <PropertyRef Name="SODId" />
+          </Key>
+          <Property Name="SODId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SODCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SOId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SalesOrderDetails_Product" FromRole="SalesOrderDetails" ToRole="Products" />
+          <NavigationProperty Name="SalesOrder" Relationship="Self.FK_SalesOrderDetails_SalesOrder" FromRole="SalesOrderDetails" ToRole="SalesOrder" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_SalesOrderDetails_UOM" FromRole="SalesOrderDetails" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="SalesReturn">
+          <Key>
+            <PropertyRef Name="SRId" />
+          </Key>
+          <Property Name="SRId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SRCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SRDate" Type="DateTime" Precision="3" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SRType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extra" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="555" FixedLength="false" Unicode="true" />
+          <Property Name="ItemAmount" Type="Double" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_SalesReturn_Customer" FromRole="SalesReturn" ToRole="Customer" />
+          <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK_SalesReturnDetails_SalesReturn" FromRole="SalesReturn" ToRole="SalesReturnDetails" />
+        </EntityType>
+        <EntityType Name="SalesReturnDetail">
+          <Key>
+            <PropertyRef Name="SRDId" />
+          </Key>
+          <Property Name="SRDId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SRDCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SRId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalesCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="UOM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DisPer" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SalesReturnDetails_Products" FromRole="SalesReturnDetails" ToRole="Products" />
+          <NavigationProperty Name="SalesReturn" Relationship="Self.FK_SalesReturnDetails_SalesReturn" FromRole="SalesReturnDetails" ToRole="SalesReturn" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_SalesReturnDetails_UOM" FromRole="SalesReturnDetails" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DOJ" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StockGroup">
+          <Key>
+            <PropertyRef Name="StockGroupId" />
+          </Key>
+          <Property Name="StockGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockGroupCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Under" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_StockGroup" FromRole="StockGroups" ToRole="Products" />
+          <NavigationProperty Name="StockGroups1" Relationship="Self.FK_StockGroups_StockGroups" FromRole="StockGroups" ToRole="StockGroups1" />
+          <NavigationProperty Name="StockGroup1" Relationship="Self.FK_StockGroups_StockGroups" FromRole="StockGroups1" ToRole="StockGroups" />
+        </EntityType>
+        <EntityType Name="StockReport">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VoucherType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qunatity" Type="Double" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="UOMCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPercentage" Type="Double" />
+          <Property Name="FU1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FU3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_StockReport_Products" FromRole="StockReport" ToRole="Products" />
+          <NavigationProperty Name="UnitsOfMeasurement" Relationship="Self.FK_StockReport_UOM" FromRole="StockReport" ToRole="UnitsOfMeasurement" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LedgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="155" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="TelePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditDays" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="CreditLimits" Type="Double" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Supplier" FromRole="Supplier" ToRole="Purchase" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseReturns" Relationship="Self.FK_PurchaseReturn_Supplier" FromRole="Supplier" ToRole="PurchaseReturn" />
+          <NavigationProperty Name="PurchaseMasters" Relationship="JJSuperMarketModel.FK_PurchaseMaster_Supplier" FromRole="Supplier" ToRole="PurchaseMaster" />
+        </EntityType>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TaxValue" Type="Double" />
+          <Property Name="Narration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UnitsOfMeasurement">
+          <Key>
+            <PropertyRef Name="UOMId" />
+          </Key>
+          <Property Name="UOMId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UOMCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UOMSymbol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="formalname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_UnitsOfMeasurement" FromRole="UnitsOfMeasurement" ToRole="Products" />
+          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetails_UOM" FromRole="UnitsOfMeasurement" ToRole="PurchaseDetails" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK_PurchaseOrderDetails_UOM" FromRole="UnitsOfMeasurement" ToRole="PurchaseOrderDetails" />
+          <NavigationProperty Name="PurchaseReturnDetails" Relationship="Self.FK_PurchaseReturnDetails_UOM" FromRole="UnitsOfMeasurement" ToRole="PurchaseReturnDetails" />
+          <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetails_UOM" FromRole="UnitsOfMeasurement" ToRole="SalesDetails" />
+          <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetails_UOM" FromRole="UnitsOfMeasurement" ToRole="SalesOrderDetails" />
+          <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK_SalesReturnDetails_UOM" FromRole="UnitsOfMeasurement" ToRole="SalesReturnDetails" />
+          <NavigationProperty Name="StockReports" Relationship="Self.FK_StockReport_UOM" FromRole="UnitsOfMeasurement" ToRole="StockReport" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Decimal" Precision="20" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AutoGeneration">
+          <Key>
+            <PropertyRef Name="AGNID" />
+          </Key>
+          <Property Name="AGNID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AGNCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KeySize" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="StartFrom" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="SoftValidation">
+          <Key>
+            <PropertyRef Name="SVId" />
+          </Key>
+          <Property Name="SVId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SVCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AvailableTimes" Type="Double" />
+        </EntityType>
+        <EntityType Name="TextTranslation">
+          <Key>
+            <PropertyRef Name="TTId" />
+          </Key>
+          <Property Name="TTId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TTCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TTEnglish" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TTTamil" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TmpProduct">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BarCode" Type="Int32" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MRP" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ReorderLevel" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK_AccountGroups_AG">
+          <End Role="AccountGroups" Type="Self.AccountGroup" Multiplicity="0..1" />
+          <End Role="AccountGroups1" Type="Self.AccountGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountGroups">
+              <PropertyRef Name="AccountGroupId" />
+            </Principal>
+            <Dependent Role="AccountGroups1">
+              <PropertyRef Name="Under" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="SalesOrder">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturn_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="SalesReturn" Type="Self.SalesReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="SalesReturn">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Journal_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="ledgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="LedgerCodeTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_ToTable">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="LedgerCodeFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipt_Ledger">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="LedgerCodeFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receipt_Ledger1">
+          <End Role="Ledger" Type="Self.Ledger" Multiplicity="0..1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ledger">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="ReceiptTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_StockGroup">
+          <End Role="StockGroups" Type="Self.StockGroup" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockGroups">
+              <PropertyRef Name="StockGroupId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="GroupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_UnitsOfMeasurement">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="UOMCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetails_Product">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PurchaseDetails" Type="Self.PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetails_Product">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetails" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturnDetails_Product">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PurchaseReturnDetails" Type="Self.PurchaseReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseReturnDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_Product">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SalesDetails" Type="Self.SalesDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderDetails_Product">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SalesOrderDetails" Type="Self.SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturnDetails_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SalesReturnDetails" Type="Self.SalesReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SalesReturnDetails">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockReport_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="StockReport" Type="Self.StockReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="StockReport">
+              <PropertyRef Name="ProductCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetails_Purchase">
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="0..1" />
+          <End Role="PurchaseDetails" Type="Self.PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="PurchaseId" />
+            </Principal>
+            <Dependent Role="PurchaseDetails">
+              <PropertyRef Name="PurchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="PurchaseDetails" Type="Self.PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="PurchaseDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetails_PurchaseOrder">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetails" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="POId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails">
+              <PropertyRef Name="POId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetails" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturn_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="PurchaseReturn" Type="Self.PurchaseReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="PurchaseReturn">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturnDetails_PurchaseReturn">
+          <End Role="PurchaseReturn" Type="Self.PurchaseReturn" Multiplicity="0..1" />
+          <End Role="PurchaseReturnDetails" Type="Self.PurchaseReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseReturn">
+              <PropertyRef Name="PRId" />
+            </Principal>
+            <Dependent Role="PurchaseReturnDetails">
+              <PropertyRef Name="PRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReturnDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="PurchaseReturnDetails" Type="Self.PurchaseReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="PurchaseReturnDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_Sales">
+          <End Role="Sales" Type="Self.Sale" Multiplicity="0..1" />
+          <End Role="SalesDetails" Type="Self.SalesDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="SalesId" />
+            </Principal>
+            <Dependent Role="SalesDetails">
+              <PropertyRef Name="SalesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="SalesDetails" Type="Self.SalesDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="SalesDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderDetails_SalesOrder">
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="0..1" />
+          <End Role="SalesOrderDetails" Type="Self.SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder">
+              <PropertyRef Name="SOId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetails">
+              <PropertyRef Name="SOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="SalesOrderDetails" Type="Self.SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="SalesOrderDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturnDetails_SalesReturn">
+          <End Role="SalesReturn" Type="Self.SalesReturn" Multiplicity="0..1" />
+          <End Role="SalesReturnDetails" Type="Self.SalesReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesReturn">
+              <PropertyRef Name="SRId" />
+            </Principal>
+            <Dependent Role="SalesReturnDetails">
+              <PropertyRef Name="SRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesReturnDetails_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="SalesReturnDetails" Type="Self.SalesReturnDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="SalesReturnDetails">
+              <PropertyRef Name="UOM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockGroups_StockGroups">
+          <End Role="StockGroups" Type="Self.StockGroup" Multiplicity="0..1" />
+          <End Role="StockGroups1" Type="Self.StockGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StockGroups">
+              <PropertyRef Name="StockGroupId" />
+            </Principal>
+            <Dependent Role="StockGroups1">
+              <PropertyRef Name="Under" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockReport_UOM">
+          <End Role="UnitsOfMeasurement" Type="Self.UnitsOfMeasurement" Multiplicity="0..1" />
+          <End Role="StockReport" Type="Self.StockReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitsOfMeasurement">
+              <PropertyRef Name="UOMId" />
+            </Principal>
+            <Dependent Role="StockReport">
+              <PropertyRef Name="UOMCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JJSuperMarketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetail" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Journals" EntityType="Self.Journal" />
+          <EntitySet Name="JournalDetails" EntityType="Self.JournalDetail" />
+          <EntitySet Name="JournalMasters" EntityType="Self.JournalMaster" />
+          <EntitySet Name="Ledgers" EntityType="Self.Ledger" />
+          <EntitySet Name="LedgerReports" EntityType="Self.LedgerReport" />
+          <EntitySet Name="LogInfoes" EntityType="Self.LogInfo" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
+          <EntitySet Name="PaymentMasters" EntityType="Self.PaymentMaster" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetail" />
+          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
+          <EntitySet Name="PurchaseOrderDetails" EntityType="Self.PurchaseOrderDetail" />
+          <EntitySet Name="PurchaseReturns" EntityType="Self.PurchaseReturn" />
+          <EntitySet Name="PurchaseReturnDetails" EntityType="Self.PurchaseReturnDetail" />
+          <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetail" />
+          <EntitySet Name="ReceiptMasters" EntityType="Self.ReceiptMaster" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
+          <EntitySet Name="SalesOrders" EntityType="Self.SalesOrder" />
+          <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetail" />
+          <EntitySet Name="SalesReturns" EntityType="Self.SalesReturn" />
+          <EntitySet Name="SalesReturnDetails" EntityType="Self.SalesReturnDetail" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="StockGroups" EntityType="Self.StockGroup" />
+          <EntitySet Name="StockReports" EntityType="Self.StockReport" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="TaxMasters" EntityType="Self.TaxMaster" />
+          <EntitySet Name="UnitsOfMeasurements" EntityType="Self.UnitsOfMeasurement" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="AutoGenerations" EntityType="Self.AutoGeneration" />
+          <EntitySet Name="SoftValidations" EntityType="Self.SoftValidation" />
+          <EntitySet Name="TextTranslations" EntityType="Self.TextTranslation" />
+          <EntitySet Name="TmpProducts" EntityType="Self.TmpProduct" />
+          <AssociationSet Name="FK_AccountGroups_AG" Association="Self.FK_AccountGroups_AG">
+            <End Role="AccountGroups" EntitySet="AccountGroups" />
+            <End Role="AccountGroups1" EntitySet="AccountGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_Customer" Association="Self.FK_SalesOrder_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SalesOrder" EntitySet="SalesOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturn_Customer" Association="Self.FK_SalesReturn_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SalesReturn" EntitySet="SalesReturns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Journal_Ledger" Association="Self.FK_Journal_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Journal" EntitySet="Journals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Ledger" Association="Self.FK_Payment_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_ToTable" Association="Self.FK_Payment_ToTable">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Ledger" Association="Self.FK_Receipt_Ledger">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Receipt" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receipt_Ledger1" Association="Self.FK_Receipt_Ledger1">
+            <End Role="Ledger" EntitySet="Ledgers" />
+            <End Role="Receipt" EntitySet="Receipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Payment" Association="Self.FK_PaymentDetails_Payment">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_StockGroup" Association="Self.FK_Products_StockGroup">
+            <End Role="StockGroups" EntitySet="StockGroups" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_UnitsOfMeasurement" Association="Self.FK_Products_UnitsOfMeasurement">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetails_Product" Association="Self.FK_PurchaseDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseDetails" EntitySet="PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetails_Product" Association="Self.FK_PurchaseOrderDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseOrderDetails" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturnDetails_Product" Association="Self.FK_PurchaseReturnDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PurchaseReturnDetails" EntitySet="PurchaseReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_Product" Association="Self.FK_SalesDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SalesDetails" EntitySet="SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetails_Product" Association="Self.FK_SalesOrderDetails_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SalesOrderDetails" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturnDetails_Products" Association="Self.FK_SalesReturnDetails_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockReport_Products" Association="Self.FK_StockReport_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="StockReport" EntitySet="StockReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Supplier" Association="Self.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetails_Purchase" Association="Self.FK_PurchaseDetails_Purchase">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="PurchaseDetails" EntitySet="PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetails_UOM" Association="Self.FK_PurchaseDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="PurchaseDetails" EntitySet="PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetails_PurchaseOrder" Association="Self.FK_PurchaseOrderDetails_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+            <End Role="PurchaseOrderDetails" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetails_UOM" Association="Self.FK_PurchaseOrderDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="PurchaseOrderDetails" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturn_Supplier" Association="Self.FK_PurchaseReturn_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="PurchaseReturn" EntitySet="PurchaseReturns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturnDetails_PurchaseReturn" Association="Self.FK_PurchaseReturnDetails_PurchaseReturn">
+            <End Role="PurchaseReturn" EntitySet="PurchaseReturns" />
+            <End Role="PurchaseReturnDetails" EntitySet="PurchaseReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReturnDetails_UOM" Association="Self.FK_PurchaseReturnDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="PurchaseReturnDetails" EntitySet="PurchaseReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_Sales" Association="Self.FK_SalesDetails_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SalesDetails" EntitySet="SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_UOM" Association="Self.FK_SalesDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="SalesDetails" EntitySet="SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetails_SalesOrder" Association="Self.FK_SalesOrderDetails_SalesOrder">
+            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SalesOrderDetails" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetails_UOM" Association="Self.FK_SalesOrderDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="SalesOrderDetails" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturnDetails_SalesReturn" Association="Self.FK_SalesReturnDetails_SalesReturn">
+            <End Role="SalesReturn" EntitySet="SalesReturns" />
+            <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesReturnDetails_UOM" Association="Self.FK_SalesReturnDetails_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockGroups_StockGroups" Association="Self.FK_StockGroups_StockGroups">
+            <End Role="StockGroups" EntitySet="StockGroups" />
+            <End Role="StockGroups1" EntitySet="StockGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockReport_UOM" Association="Self.FK_StockReport_UOM">
+            <End Role="UnitsOfMeasurement" EntitySet="UnitsOfMeasurements" />
+            <End Role="StockReport" EntitySet="StockReports" />
+          </AssociationSet>
+          <EntitySet Name="PurchaseMasters" EntityType="JJSuperMarketModel.PurchaseMaster" />
+          <AssociationSet Name="FK_PurchaseMaster_Supplier" Association="JJSuperMarketModel.FK_PurchaseMaster_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="PurchaseMaster" EntitySet="PurchaseMasters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PurchaseMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="LedgerCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Extra" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Narration" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ItemAmount" Type="Double" />
+          <Property Name="NoOfProducts" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Supplier" Relationship="JJSuperMarketModel.FK_PurchaseMaster_Supplier" FromRole="PurchaseMaster" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK_PurchaseMaster_Supplier">
+          <End Type="JJSuperMarketModel.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="JJSuperMarketModel.PurchaseMaster" Role="PurchaseMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="PurchaseMaster">
+              <PropertyRef Name="LedgerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JJSuperMarketModelStoreContainer" CdmEntityContainer="JJSuperMarketEntities">
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroups">
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="AccountGroupCode" ColumnName="AccountGroupCode" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Under" ColumnName="Under" />
+                <ScalarProperty Name="ProfitAndLoss" ColumnName="ProfitAndLoss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="AcType" ColumnName="AcType" />
+                <ScalarProperty Name="MCRCode" ColumnName="MCRCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CPerson1" ColumnName="CPerson1" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CPerson2" ColumnName="CPerson2" />
+                <ScalarProperty Name="MobileNo2" ColumnName="MobileNo2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address4" ColumnName="Address4" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="PhNo" ColumnName="PhNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Tin" ColumnName="Tin" />
+                <ScalarProperty Name="Cst" ColumnName="Cst" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="TinNo" ColumnName="TinNo" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimits" ColumnName="CreditLimits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journals">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="JournalCode" ColumnName="JournalCode" />
+                <ScalarProperty Name="ledgerCode" ColumnName="ledgerCode" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.JournalDetail">
+              <MappingFragment StoreEntitySet="JournalDetails">
+                <ScalarProperty Name="JDId" ColumnName="JDId" />
+                <ScalarProperty Name="JDCode" ColumnName="JDCode" />
+                <ScalarProperty Name="JournalCode" ColumnName="JournalCode" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalMasters">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.JournalMaster">
+              <MappingFragment StoreEntitySet="JournalMaster">
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="JournalCode" ColumnName="JournalCode" />
+                <ScalarProperty Name="EntryNo" ColumnName="EntryNo" />
+                <ScalarProperty Name="JournalDate" ColumnName="JournalDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ledgers">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Ledger">
+              <MappingFragment StoreEntitySet="Ledger">
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="CrAmt" ColumnName="CrAmt" />
+                <ScalarProperty Name="DrAmt" ColumnName="DrAmt" />
+                <ScalarProperty Name="AccCode" ColumnName="AccCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedgerReports">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.LedgerReport">
+              <MappingFragment StoreEntitySet="LedgerReport">
+                <ScalarProperty Name="LReportId" ColumnName="LReportId" />
+                <ScalarProperty Name="LReportCode" ColumnName="LReportCode" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="LDate" ColumnName="LDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DRAmount" ColumnName="DRAmount" />
+                <ScalarProperty Name="CRAmount" ColumnName="CRAmount" />
+                <ScalarProperty Name="FU1" ColumnName="FU1" />
+                <ScalarProperty Name="FU2" ColumnName="FU2" />
+                <ScalarProperty Name="FU3" ColumnName="FU3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogInfoes">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.LogInfo">
+              <MappingFragment StoreEntitySet="LogInfo">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentTo" ColumnName="PaymentTo" />
+                <ScalarProperty Name="LedgerCodeTo" ColumnName="LedgerCodeTo" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="LedgerCodeFrom" ColumnName="LedgerCodeFrom" />
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="PDId" ColumnName="PDId" />
+                <ScalarProperty Name="PDCode" ColumnName="PDCode" />
+                <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="RefType" ColumnName="RefType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMasters">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PaymentMaster">
+              <MappingFragment StoreEntitySet="PaymentMaster">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SalesRId" ColumnName="SalesRId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="PurchaseRate" ColumnName="PurchaseRate" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
+                <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+                <ScalarProperty Name="ReOrderLevel" ColumnName="ReOrderLevel" />
+                <ScalarProperty Name="OpQty" ColumnName="OpQty" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="PurchaseCode" ColumnName="PurchaseCode" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="PurchaseType" ColumnName="PurchaseType" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PurchaseDetail">
+              <MappingFragment StoreEntitySet="PurchaseDetails">
+                <ScalarProperty Name="PDId" ColumnName="PDId" />
+                <ScalarProperty Name="PDCode" ColumnName="PDCode" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="POCode" ColumnName="POCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="POId" ColumnName="POId" />
+                <ScalarProperty Name="POCode" ColumnName="POCode" />
+                <ScalarProperty Name="PODate" ColumnName="PODate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PurchaseOrderDetail">
+              <MappingFragment StoreEntitySet="PurchaseOrderDetails">
+                <ScalarProperty Name="PODId" ColumnName="PODId" />
+                <ScalarProperty Name="PODCode" ColumnName="PODCode" />
+                <ScalarProperty Name="POId" ColumnName="POId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReturns">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PurchaseReturn">
+              <MappingFragment StoreEntitySet="PurchaseReturn">
+                <ScalarProperty Name="PRId" ColumnName="PRId" />
+                <ScalarProperty Name="PRCode" ColumnName="PRCode" />
+                <ScalarProperty Name="PRDate" ColumnName="PRDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="PRType" ColumnName="PRType" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReturnDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PurchaseReturnDetail">
+              <MappingFragment StoreEntitySet="PurchaseReturnDetails">
+                <ScalarProperty Name="PRDId" ColumnName="PRDId" />
+                <ScalarProperty Name="PRDCode" ColumnName="PRDCode" />
+                <ScalarProperty Name="PRId" ColumnName="PRId" />
+                <ScalarProperty Name="PurchaseCode" ColumnName="PurchaseCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipts">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="ReceiptCode" ColumnName="ReceiptCode" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ReceiptFrom" ColumnName="ReceiptFrom" />
+                <ScalarProperty Name="LedgerCodeFrom" ColumnName="LedgerCodeFrom" />
+                <ScalarProperty Name="ReceiptMode" ColumnName="ReceiptMode" />
+                <ScalarProperty Name="ReceiptTo" ColumnName="ReceiptTo" />
+                <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExtraCharge" ColumnName="ExtraCharge" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="RDId" ColumnName="RDId" />
+                <ScalarProperty Name="RDCode" ColumnName="RDCode" />
+                <ScalarProperty Name="ReceiptCode" ColumnName="ReceiptCode" />
+                <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+                <ScalarProperty Name="RefType" ColumnName="RefType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptMasters">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.ReceiptMaster">
+              <MappingFragment StoreEntitySet="ReceiptMaster">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="PurchaseRId" ColumnName="PurchaseRId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SalesId" ColumnName="SalesId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ReceiptMode" ColumnName="ReceiptMode" />
+                <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="SalesId" ColumnName="SalesId" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="SalesDate" ColumnName="SalesDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="SalesType" ColumnName="SalesType" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.SalesDetail">
+              <MappingFragment StoreEntitySet="SalesDetails">
+                <ScalarProperty Name="SDId" ColumnName="SDId" />
+                <ScalarProperty Name="SDCode" ColumnName="SDCode" />
+                <ScalarProperty Name="SalesId" ColumnName="SalesId" />
+                <ScalarProperty Name="SOCode" ColumnName="SOCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrders">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.SalesOrder">
+              <MappingFragment StoreEntitySet="SalesOrder">
+                <ScalarProperty Name="SOId" ColumnName="SOId" />
+                <ScalarProperty Name="SOCode" ColumnName="SOCode" />
+                <ScalarProperty Name="SODate" ColumnName="SODate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.SalesOrderDetail">
+              <MappingFragment StoreEntitySet="SalesOrderDetails">
+                <ScalarProperty Name="SODId" ColumnName="SODId" />
+                <ScalarProperty Name="SODCode" ColumnName="SODCode" />
+                <ScalarProperty Name="SOId" ColumnName="SOId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReturns">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.SalesReturn">
+              <MappingFragment StoreEntitySet="SalesReturn">
+                <ScalarProperty Name="SRId" ColumnName="SRId" />
+                <ScalarProperty Name="SRCode" ColumnName="SRCode" />
+                <ScalarProperty Name="SRDate" ColumnName="SRDate" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="SRType" ColumnName="SRType" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesReturnDetails">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.SalesReturnDetail">
+              <MappingFragment StoreEntitySet="SalesReturnDetails">
+                <ScalarProperty Name="SRDId" ColumnName="SRDId" />
+                <ScalarProperty Name="SRDCode" ColumnName="SRDCode" />
+                <ScalarProperty Name="SRId" ColumnName="SRId" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DisPer" ColumnName="DisPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="StaffCode" ColumnName="StaffCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockGroups">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.StockGroup">
+              <MappingFragment StoreEntitySet="StockGroups">
+                <ScalarProperty Name="StockGroupId" ColumnName="StockGroupId" />
+                <ScalarProperty Name="StockGroupCode" ColumnName="StockGroupCode" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Under" ColumnName="Under" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockReports">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.StockReport">
+              <MappingFragment StoreEntitySet="StockReport">
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="SDate" ColumnName="SDate" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Qunatity" ColumnName="Qunatity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="FU1" ColumnName="FU1" />
+                <ScalarProperty Name="FU2" ColumnName="FU2" />
+                <ScalarProperty Name="FU3" ColumnName="FU3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="TelePhoneNo" ColumnName="TelePhoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="TinNo" ColumnName="TinNo" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CreditLimits" ColumnName="CreditLimits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxMasters">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.TaxMaster">
+              <MappingFragment StoreEntitySet="TaxMaster">
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitsOfMeasurements">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.UnitsOfMeasurement">
+              <MappingFragment StoreEntitySet="UnitsOfMeasurement">
+                <ScalarProperty Name="UOMId" ColumnName="UOMId" />
+                <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+                <ScalarProperty Name="UOMSymbol" ColumnName="UOMSymbol" />
+                <ScalarProperty Name="formalname" ColumnName="formalname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoGenerations">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.AutoGeneration">
+              <MappingFragment StoreEntitySet="AutoGeneration">
+                <ScalarProperty Name="AGNID" ColumnName="AGNID" />
+                <ScalarProperty Name="AGNCode" ColumnName="AGNCode" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="KeySize" ColumnName="KeySize" />
+                <ScalarProperty Name="StartFrom" ColumnName="StartFrom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftValidations">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.SoftValidation">
+              <MappingFragment StoreEntitySet="SoftValidation">
+                <ScalarProperty Name="SVId" ColumnName="SVId" />
+                <ScalarProperty Name="SVCode" ColumnName="SVCode" />
+                <ScalarProperty Name="AvailableTimes" ColumnName="AvailableTimes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TextTranslations">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.TextTranslation">
+              <MappingFragment StoreEntitySet="TextTranslation">
+                <ScalarProperty Name="TTId" ColumnName="TTId" />
+                <ScalarProperty Name="TTCode" ColumnName="TTCode" />
+                <ScalarProperty Name="TTEnglish" ColumnName="TTEnglish" />
+                <ScalarProperty Name="TTTamil" ColumnName="TTTamil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TmpProducts">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.TmpProduct">
+              <MappingFragment StoreEntitySet="TmpProduct">
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseMasters">
+            <EntityTypeMapping TypeName="JJSuperMarketModel.PurchaseMaster">
+              <MappingFragment StoreEntitySet="PurchaseMaster">
+                <ScalarProperty Name="NoOfProducts" ColumnName="NoOfProducts" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="PurchaseType" ColumnName="PurchaseType" />
+                <ScalarProperty Name="LedgerCode" ColumnName="LedgerCode" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PurchaseCode" ColumnName="PurchaseCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

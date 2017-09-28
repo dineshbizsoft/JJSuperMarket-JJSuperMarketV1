@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="JJSuperMarket.frmWelcome"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JJSuperMarket"
+              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+                xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             xmlns:ctrl ="clr-namespace:JJSuperMarket"
+             d:DesignHeight="750" d:DesignWidth="1200" >
+
+    <Grid  >
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <GroupBox  Width="350" Height="280" FontWeight="Bold"  Header="Datewise Monthly Sales Report" Margin="10">
+                <Grid>
+                    <DataGrid Name="SalesGrid" CanUserSortColumns="False"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Width="350" Height="280" FontWeight="Bold"  Foreground="Gray" Header="Top 10 Customer Details" Margin="10">
+                <DataGrid Name="dgvCustomerInfo"/>
+            </GroupBox>
+            <GroupBox  Width="350" Height="280" FontWeight="Bold" Margin="10" >
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal"  >
+                        <DatePicker x:Name="dtpDate"  Margin="10" Width="100" SelectedDateChanged="dtpDate_SelectedDateChanged" />
+                        <Label x:Name="lblName" Margin="10" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <DataGrid Name="dgvSaleInfo" CanUserSortColumns="False"></DataGrid>
+
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+           
+            <GroupBox Margin="10" Width="350" Height="280" FontWeight="Bold" >
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal"  >
+
+                     
+                        <Label  Content="Category Wise Sales" Margin="10" />
+                        <DatePicker x:Name="dtpCDate" Margin="10"  Width="100" SelectedDateChanged="dtpCDate_SelectedDateChanged" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <DataGrid Name="dgvCatagorWiseSales"></DataGrid>
+            </GroupBox>
+            <GroupBox Margin="10" Width="350" Height="280" FontWeight="Bold" >
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal"  >
+                        <Label  Content="Sales Report" Margin="10" />
+                        <ComboBox x:Name="cmbMonths" SelectionChanged="cmbMonths_SelectionChanged" Width="200" Margin="5"></ComboBox>
+                       
+                    </StackPanel>
+                </GroupBox.Header>
+                <DataGrid Name="dgvSalesTypeWiseReport" CanUserSortColumns="False"></DataGrid>
+            </GroupBox>
+            <GroupBox Margin="10" Width="350" Height="280" FontWeight="Bold" >
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal"  >
+                        <Label  Content="Net Profit" Margin="10" />
+                        <ComboBox x:Name="cmbNPMonths" SelectionChanged="cmbNPMonths_SelectionChanged" Width="200" Margin="5"></ComboBox>
+
+                    </StackPanel>
+                </GroupBox.Header>
+                <DataGrid Name="dgvProfitReport" CanUserSortColumns="False" ></DataGrid>
+            </GroupBox>
+
+        </StackPanel>
+      
+    </Grid>
+</UserControl>
