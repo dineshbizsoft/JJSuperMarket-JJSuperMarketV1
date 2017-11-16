@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data.Entity.Core.Objects;
 namespace JJSuperMarket.Reports
 {
     /// <summary>
@@ -60,7 +60,7 @@ namespace JJSuperMarket.Reports
             if (string.IsNullOrEmpty(cmbProduct.Text))
             {
 
-                var lstSD = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate && x.Sale.SalesDate <= dtpToDate.SelectedDate).ToList();
+                var lstSD = db.SalesDetails.Where(x => EntityFunctions.TruncateTime( x.Sale.SalesDate) >= dtpFromDate.SelectedDate && EntityFunctions.TruncateTime(x.Sale.SalesDate) <= dtpToDate.SelectedDate).ToList();
                 foreach (var lst in lstSD)
                 {
                     ProductReport p1 = new ProductReport();
@@ -75,7 +75,7 @@ namespace JJSuperMarket.Reports
                     p1.ProfitAmount = (p1.SellingRate - p1.PurchasaRate) * p1.Qty;
                     PRP.Add(p1);
                 }
-                  dgvProductSale.ItemsSource = PRP.OrderByDescending(x=>x.SaleDate) ;
+                  dgvProductSale.ItemsSource = PRP.OrderBy(x=>x.SaleDate) ;
                // dgvProductSale.ItemsSource = PRP.OrderBy(x => x.Invoice).GroupBy(x=>x.SaleDate ).Select(x=> new {  Name=x.Sum(y=>y.Qty) });
                 dgvProductSale.Items.Refresh();
 
@@ -84,7 +84,7 @@ namespace JJSuperMarket.Reports
 
             {
                 var s = cmbProduct.SelectedItem as Product;
-                var lstSD = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate <= dtpToDate.SelectedDate.Value && x.Product.ProductName == s.ProductName).ToList();
+                var lstSD = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate) <= dtpToDate.SelectedDate.Value && x.Product.ProductName == s.ProductName).ToList();
                 foreach (var lst1 in lstSD)
                 {
                     ProductReport p1 = new ProductReport();

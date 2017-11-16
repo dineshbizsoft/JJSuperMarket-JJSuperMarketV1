@@ -12182,6 +12182,8 @@ namespace JJSuperMarket {
             
             private global::System.Data.DataColumn columnItemAmount;
             
+            private global::System.Data.DataColumn columnCustomerName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SalesDataTable() {
@@ -12297,6 +12299,14 @@ namespace JJSuperMarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CustomerNameColumn {
+                get {
+                    return this.columnCustomerName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -12332,7 +12342,7 @@ namespace JJSuperMarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SalesRow AddSalesRow(string SalesCode, System.DateTime SalesDate, CustomerRow parentCustomerRowByFK_Sales_Customer, string SalesType, double Extra, double DiscountAmount, string Narration, decimal InvoiceNo, double ItemAmount) {
+            public SalesRow AddSalesRow(string SalesCode, System.DateTime SalesDate, CustomerRow parentCustomerRowByFK_Sales_Customer, string SalesType, double Extra, double DiscountAmount, string Narration, decimal InvoiceNo, double ItemAmount, string CustomerName) {
                 SalesRow rowSalesRow = ((SalesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -12344,7 +12354,8 @@ namespace JJSuperMarket {
                         DiscountAmount,
                         Narration,
                         InvoiceNo,
-                        ItemAmount};
+                        ItemAmount,
+                        CustomerName};
                 if ((parentCustomerRowByFK_Sales_Customer != null)) {
                     columnValuesArray[3] = parentCustomerRowByFK_Sales_Customer[0];
                 }
@@ -12387,6 +12398,7 @@ namespace JJSuperMarket {
                 this.columnNarration = base.Columns["Narration"];
                 this.columnInvoiceNo = base.Columns["InvoiceNo"];
                 this.columnItemAmount = base.Columns["ItemAmount"];
+                this.columnCustomerName = base.Columns["CustomerName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12412,6 +12424,8 @@ namespace JJSuperMarket {
                 base.Columns.Add(this.columnInvoiceNo);
                 this.columnItemAmount = new global::System.Data.DataColumn("ItemAmount", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemAmount);
+                this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSalesId}, true));
                 this.columnSalesId.AutoIncrement = true;
@@ -12576,6 +12590,12 @@ namespace JJSuperMarket {
             
             private global::System.Data.DataColumn columnDisPer;
             
+            private global::System.Data.DataColumn columnProductName;
+            
+            private global::System.Data.DataColumn columnUOMSymbol;
+            
+            private global::System.Data.DataColumn columnAmount;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SalesDetailsDataTable() {
@@ -12691,6 +12711,30 @@ namespace JJSuperMarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ProductNameColumn {
+                get {
+                    return this.columnProductName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UOMSymbolColumn {
+                get {
+                    return this.columnUOMSymbol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AmountColumn {
+                get {
+                    return this.columnAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -12726,7 +12770,7 @@ namespace JJSuperMarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SalesDetailsRow AddSalesDetailsRow(string SDCode, SalesRow parentSalesRowByFK_SalesDetails_Sales, string SOCode, ProductsRow parentProductsRowByFK_SalesDetails_Product, double Rate, double Quantity, UnitsOfMeasurementRow parentUnitsOfMeasurementRowByFK_SalesDetails_UOM, string TaxPer, double DisPer) {
+            public SalesDetailsRow AddSalesDetailsRow(string SDCode, SalesRow parentSalesRowByFK_SalesDetails_Sales, string SOCode, ProductsRow parentProductsRowByFK_SalesDetails_Product, double Rate, double Quantity, UnitsOfMeasurementRow parentUnitsOfMeasurementRowByFK_SalesDetails_UOM, string TaxPer, double DisPer, string ProductName, string UOMSymbol, double Amount) {
                 SalesDetailsRow rowSalesDetailsRow = ((SalesDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -12738,7 +12782,10 @@ namespace JJSuperMarket {
                         Quantity,
                         null,
                         TaxPer,
-                        DisPer};
+                        DisPer,
+                        ProductName,
+                        UOMSymbol,
+                        Amount};
                 if ((parentSalesRowByFK_SalesDetails_Sales != null)) {
                     columnValuesArray[2] = parentSalesRowByFK_SalesDetails_Sales[0];
                 }
@@ -12787,6 +12834,9 @@ namespace JJSuperMarket {
                 this.columnUOM = base.Columns["UOM"];
                 this.columnTaxPer = base.Columns["TaxPer"];
                 this.columnDisPer = base.Columns["DisPer"];
+                this.columnProductName = base.Columns["ProductName"];
+                this.columnUOMSymbol = base.Columns["UOMSymbol"];
+                this.columnAmount = base.Columns["Amount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12812,6 +12862,12 @@ namespace JJSuperMarket {
                 base.Columns.Add(this.columnTaxPer);
                 this.columnDisPer = new global::System.Data.DataColumn("DisPer", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDisPer);
+                this.columnProductName = new global::System.Data.DataColumn("ProductName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductName);
+                this.columnUOMSymbol = new global::System.Data.DataColumn("UOMSymbol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUOMSymbol);
+                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAmount);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSDId}, true));
                 this.columnSDId.AutoIncrement = true;
@@ -26261,6 +26317,22 @@ namespace JJSuperMarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CustomerName {
+                get {
+                    try {
+                        return ((string)(this[this.tableSales.CustomerNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerName\' in table \'Sales\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSales.CustomerNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CustomerRow CustomerRow {
                 get {
                     return ((CustomerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Sales_Customer"])));
@@ -26376,6 +26448,18 @@ namespace JJSuperMarket {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetItemAmountNull() {
                 this[this.tableSales.ItemAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCustomerNameNull() {
+                return this.IsNull(this.tableSales.CustomerNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCustomerNameNull() {
+                this[this.tableSales.CustomerNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26561,6 +26645,54 @@ namespace JJSuperMarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ProductName {
+                get {
+                    try {
+                        return ((string)(this[this.tableSalesDetails.ProductNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductName\' in table \'SalesDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSalesDetails.ProductNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UOMSymbol {
+                get {
+                    try {
+                        return ((string)(this[this.tableSalesDetails.UOMSymbolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UOMSymbol\' in table \'SalesDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSalesDetails.UOMSymbolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Amount {
+                get {
+                    try {
+                        return ((double)(this[this.tableSalesDetails.AmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Amount\' in table \'SalesDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSalesDetails.AmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProductsRow ProductsRow {
                 get {
                     return ((ProductsRow)(this.GetParentRow(this.Table.ParentRelations["FK_SalesDetails_Product"])));
@@ -26698,6 +26830,42 @@ namespace JJSuperMarket {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDisPerNull() {
                 this[this.tableSalesDetails.DisPerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsProductNameNull() {
+                return this.IsNull(this.tableSalesDetails.ProductNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetProductNameNull() {
+                this[this.tableSalesDetails.ProductNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUOMSymbolNull() {
+                return this.IsNull(this.tableSalesDetails.UOMSymbolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUOMSymbolNull() {
+                this[this.tableSalesDetails.UOMSymbolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAmountNull() {
+                return this.IsNull(this.tableSalesDetails.AmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAmountNull() {
+                this[this.tableSalesDetails.AmountColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -34424,10 +34592,10 @@ SELECT CompanyId, CompanyCode, CompanyName, Address1, Address2, Address3, Addres
                 "UserName] = @Original_UserName)) AND ((@IsNull_PassWord = 1 AND [PassWord] IS NU" +
                 "LL) OR ([PassWord] = @Original_PassWord)) AND ((@IsNull_MinAmount = 1 AND [MinAm" +
                 "ount] IS NULL) OR ([MinAmount] = @Original_MinAmount)) AND ((@IsNull_Amount = 1 " +
-                "AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)));\r\nSELECT CompanyId, Com" +
-                "panyCode, CompanyName, Address1, Address2, Address3, Address4, Pincode, PhNo, Mo" +
-                "bileNo, Tin, Cst, UserName, PassWord, MinAmount, Amount FROM CompanyDetails WHER" +
-                "E (CompanyId = @CompanyId)";
+                "AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)));\nSELECT CompanyId, Comp" +
+                "anyCode, CompanyName, Address1, Address2, Address3, Address4, Pincode, PhNo, Mob" +
+                "ileNo, Tin, Cst, UserName, PassWord, MinAmount, Amount FROM CompanyDetails WHERE" +
+                " (CompanyId = @CompanyId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 20, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -35337,9 +35505,9 @@ SELECT CustomerId, CustomerCode, LedgerName, CustomerName, AddressLine, TelePhon
                 "IsNull_TinNo = 1 AND [TinNo] IS NULL) OR ([TinNo] = @Original_TinNo)) AND ((@IsN" +
                 "ull_CreditDays = 1 AND [CreditDays] IS NULL) OR ([CreditDays] = @Original_Credit" +
                 "Days)) AND ((@IsNull_CreditLimits = 1 AND [CreditLimits] IS NULL) OR ([CreditLim" +
-                "its] = @Original_CreditLimits)));\r\nSELECT CustomerId, CustomerCode, LedgerName, " +
-                "CustomerName, AddressLine, TelePhoneNo, MobileNo, EMailId, CST, TinNo, CreditDay" +
-                "s, CreditLimits FROM Customer WHERE (CustomerId = @CustomerId)";
+                "its] = @Original_CreditLimits)));\nSELECT CustomerId, CustomerCode, LedgerName, C" +
+                "ustomerName, AddressLine, TelePhoneNo, MobileNo, EMailId, CST, TinNo, CreditDays" +
+                ", CreditLimits FROM Customer WHERE (CustomerId = @CustomerId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LedgerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LedgerName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -37066,8 +37234,8 @@ SELECT JDId, JDCode, JournalCode, LedgerCode, DrAmt, CrAmt, Narration FROM Journ
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[JournalMaster] ([JournalCode], [EntryNo], [JournalDate]) VALUE" +
-                "S (@JournalCode, @EntryNo, @JournalDate);\r\nSELECT JournalId, JournalCode, EntryN" +
-                "o, JournalDate FROM JournalMaster WHERE (JournalId = SCOPE_IDENTITY())";
+                "S (@JournalCode, @EntryNo, @JournalDate);\nSELECT JournalId, JournalCode, EntryNo" +
+                ", JournalDate FROM JournalMaster WHERE (JournalId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JournalCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JournalCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EntryNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EntryNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -37530,9 +37698,9 @@ SELECT LedgerId, LedgerCode, LedgerName, BillingName, Address, Phone, Mobile, Ma
                 "GroupCode)) AND ((@IsNull_CrAmt = 1 AND [CrAmt] IS NULL) OR ([CrAmt] = @Original" +
                 "_CrAmt)) AND ((@IsNull_DrAmt = 1 AND [DrAmt] IS NULL) OR ([DrAmt] = @Original_Dr" +
                 "Amt)) AND ((@IsNull_AccCode = 1 AND [AccCode] IS NULL) OR ([AccCode] = @Original" +
-                "_AccCode)));\r\nSELECT LedgerId, LedgerCode, LedgerName, BillingName, Address, Pho" +
-                "ne, Mobile, MailId, CreditDays, CreditLimit, Note, GroupCode, CrAmt, DrAmt, AccC" +
-                "ode FROM Ledger WHERE (LedgerId = @LedgerId)";
+                "_AccCode)));\nSELECT LedgerId, LedgerCode, LedgerName, BillingName, Address, Phon" +
+                "e, Mobile, MailId, CreditDays, CreditLimit, Note, GroupCode, CrAmt, DrAmt, AccCo" +
+                "de FROM Ledger WHERE (LedgerId = @LedgerId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LedgerCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LedgerCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LedgerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LedgerName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -38378,9 +38546,9 @@ SELECT LReportId, LReportCode, VoucherNo, VoucherType, LDate, LedgerCode, Partic
                 "mount = 1 AND [CRAmount] IS NULL) OR ([CRAmount] = @Original_CRAmount)) AND ((@I" +
                 "sNull_FU1 = 1 AND [FU1] IS NULL) OR ([FU1] = @Original_FU1)) AND ((@IsNull_FU2 =" +
                 " 1 AND [FU2] IS NULL) OR ([FU2] = @Original_FU2)) AND ((@IsNull_FU3 = 1 AND [FU3" +
-                "] IS NULL) OR ([FU3] = @Original_FU3)));\r\nSELECT LReportId, LReportCode, Voucher" +
-                "No, VoucherType, LDate, LedgerCode, Particulars, Narration, DRAmount, CRAmount, " +
-                "FU1, FU2, FU3 FROM LedgerReport WHERE (LReportId = @LReportId)";
+                "] IS NULL) OR ([FU3] = @Original_FU3)));\nSELECT LReportId, LReportCode, VoucherN" +
+                "o, VoucherType, LDate, LedgerCode, Particulars, Narration, DRAmount, CRAmount, F" +
+                "U1, FU2, FU3 FROM LedgerReport WHERE (LReportId = @LReportId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LReportCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LReportCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VoucherNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VoucherNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -39090,8 +39258,8 @@ SELECT LReportId, LReportCode, VoucherNo, VoucherType, LDate, LedgerCode, Partic
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LogDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LogDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[LogInfo] ([LogDate], [Error]) VALUES (@LogDate, @Error);\r\nSELE" +
-                "CT LogId, LogDate, Error FROM LogInfo WHERE (LogId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[LogInfo] ([LogDate], [Error]) VALUES (@LogDate, @Error);\nSELEC" +
+                "T LogId, LogDate, Error FROM LogInfo WHERE (LogId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LogDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LogDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Error", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Error", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -39099,8 +39267,8 @@ SELECT LReportId, LReportCode, VoucherNo, VoucherType, LDate, LedgerCode, Partic
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[LogInfo] SET [LogDate] = @LogDate, [Error] = @Error WHERE (([LogId]" +
                 " = @Original_LogId) AND ((@IsNull_LogDate = 1 AND [LogDate] IS NULL) OR ([LogDat" +
-                "e] = @Original_LogDate)));\r\nSELECT LogId, LogDate, Error FROM LogInfo WHERE (Log" +
-                "Id = @LogId)";
+                "e] = @Original_LogDate)));\nSELECT LogId, LogDate, Error FROM LogInfo WHERE (LogI" +
+                "d = @LogId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LogDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LogDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Error", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Error", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -39502,10 +39670,10 @@ SELECT PaymentId, PaymentCode, PaymentDate, PaymentTo, LedgerCodeTo, PaymentMode
                 " = @Original_Status)) AND ((@IsNull_ExtraCharge = 1 AND [ExtraCharge] IS NULL) O" +
                 "R ([ExtraCharge] = @Original_ExtraCharge)) AND ((@IsNull_ChequeNo = 1 AND [Chequ" +
                 "eNo] IS NULL) OR ([ChequeNo] = @Original_ChequeNo)) AND ((@IsNull_ChequeDate = 1" +
-                " AND [ChequeDate] IS NULL) OR ([ChequeDate] = @Original_ChequeDate)));\r\nSELECT P" +
-                "aymentId, PaymentCode, PaymentDate, PaymentTo, LedgerCodeTo, PaymentMode, Ledger" +
-                "CodeFrom, PayAmount, Narration, RefNo, Status, ExtraCharge, ChequeNo, ChequeDate" +
-                " FROM Payment WHERE (PaymentId = @PaymentId)";
+                " AND [ChequeDate] IS NULL) OR ([ChequeDate] = @Original_ChequeDate)));\nSELECT Pa" +
+                "ymentId, PaymentCode, PaymentDate, PaymentTo, LedgerCodeTo, PaymentMode, LedgerC" +
+                "odeFrom, PayAmount, Narration, RefNo, Status, ExtraCharge, ChequeNo, ChequeDate " +
+                "FROM Payment WHERE (PaymentId = @PaymentId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -45862,9 +46030,9 @@ SELECT ReceiptId, ReceiptCode, ReceiptDate, ReceiptFrom, LedgerCodeFrom, Receipt
                 "Charge] IS NULL) OR ([ExtraCharge] = @Original_ExtraCharge)) AND ((@IsNull_Chequ" +
                 "eNo = 1 AND [ChequeNo] IS NULL) OR ([ChequeNo] = @Original_ChequeNo)) AND ((@IsN" +
                 "ull_ChequeDate = 1 AND [ChequeDate] IS NULL) OR ([ChequeDate] = @Original_Cheque" +
-                "Date)));\r\nSELECT ReceiptId, ReceiptCode, ReceiptDate, ReceiptFrom, LedgerCodeFro" +
-                "m, ReceiptMode, ReceiptTo, ReceiptAmount, Narration, RefNo, Status, ExtraCharge," +
-                " ChequeNo, ChequeDate FROM Receipt WHERE (ReceiptId = @ReceiptId)";
+                "Date)));\nSELECT ReceiptId, ReceiptCode, ReceiptDate, ReceiptFrom, LedgerCodeFrom" +
+                ", ReceiptMode, ReceiptTo, ReceiptAmount, Narration, RefNo, Status, ExtraCharge, " +
+                "ChequeNo, ChequeDate FROM Receipt WHERE (ReceiptId = @ReceiptId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReceiptCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReceiptCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReceiptDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReceiptDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -53125,9 +53293,9 @@ SELECT StockId, StockCode, VoucherNo, VoucherType, SDate, ProductCode, Qunatity,
                 "centage] = @Original_TaxPercentage)) AND ((@IsNull_FU1 = 1 AND [FU1] IS NULL) OR" +
                 " ([FU1] = @Original_FU1)) AND ((@IsNull_FU2 = 1 AND [FU2] IS NULL) OR ([FU2] = @" +
                 "Original_FU2)) AND ((@IsNull_FU3 = 1 AND [FU3] IS NULL) OR ([FU3] = @Original_FU" +
-                "3)));\r\nSELECT StockId, StockCode, VoucherNo, VoucherType, SDate, ProductCode, Qu" +
-                "natity, Rate, UOMCode, TaxPercentage, FU1, FU2, FU3 FROM StockReport WHERE (Stoc" +
-                "kId = @StockId)";
+                "3)));\nSELECT StockId, StockCode, VoucherNo, VoucherType, SDate, ProductCode, Qun" +
+                "atity, Rate, UOMCode, TaxPercentage, FU1, FU2, FU3 FROM StockReport WHERE (Stock" +
+                "Id = @StockId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StockCode", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "StockCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VoucherNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VoucherNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -53898,9 +54066,9 @@ SELECT SupplierId, SupplierCode, LedgerName, SupplierName, AddressLine, TelePhon
                 " AND ((@IsNull_CST = 1 AND [CST] IS NULL) OR ([CST] = @Original_CST)) AND ((@IsN" +
                 "ull_CreditDays = 1 AND [CreditDays] IS NULL) OR ([CreditDays] = @Original_Credit" +
                 "Days)) AND ((@IsNull_CreditLimits = 1 AND [CreditLimits] IS NULL) OR ([CreditLim" +
-                "its] = @Original_CreditLimits)));\r\nSELECT SupplierId, SupplierCode, LedgerName, " +
-                "SupplierName, AddressLine, TelePhoneNo, MobileNo, EMailId, TinNo, CST, CreditDay" +
-                "s, CreditLimits FROM Supplier WHERE (SupplierId = @SupplierId)";
+                "its] = @Original_CreditLimits)));\nSELECT SupplierId, SupplierCode, LedgerName, S" +
+                "upplierName, AddressLine, TelePhoneNo, MobileNo, EMailId, TinNo, CST, CreditDays" +
+                ", CreditLimits FROM Supplier WHERE (SupplierId = @SupplierId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SupplierCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SupplierCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LedgerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LedgerName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -54580,8 +54748,8 @@ SELECT SupplierId, SupplierCode, LedgerName, SupplierName, AddressLine, TelePhon
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TaxMaster] ([TaxCode], [TaxValue], [Narration]) VALUES (@TaxCo" +
-                "de, @TaxValue, @Narration);\r\nSELECT TaxId, TaxCode, TaxValue, Narration FROM Tax" +
-                "Master WHERE (TaxId = SCOPE_IDENTITY())";
+                "de, @TaxValue, @Narration);\nSELECT TaxId, TaxCode, TaxValue, Narration FROM TaxM" +
+                "aster WHERE (TaxId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxCode", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TaxValue", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TaxValue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -55501,8 +55669,8 @@ SELECT TaxId, TaxCode, TaxValue, Narration FROM TaxMaster WHERE (TaxId = @TaxId)
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[UnitsOfMeasurement] ([UOMCode], [UOMSymbol], [formalname]) VAL" +
-                "UES (@UOMCode, @UOMSymbol, @formalname);\r\nSELECT UOMId, UOMCode, UOMSymbol, form" +
-                "alname FROM UnitsOfMeasurement WHERE (UOMId = SCOPE_IDENTITY())";
+                "UES (@UOMCode, @UOMSymbol, @formalname);\nSELECT UOMId, UOMCode, UOMSymbol, forma" +
+                "lname FROM UnitsOfMeasurement WHERE (UOMId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UOMCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UOMSymbol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UOMSymbol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -55945,9 +56113,9 @@ SELECT Id, PurchaseCode, PurchaseDate, LedgerCode, PurchaseType, InvoiceNo, Extr
                 "unt)) AND ((@IsNull_Narration = 1 AND [Narration] IS NULL) OR ([Narration] = @Or" +
                 "iginal_Narration)) AND ((@IsNull_ItemAmount = 1 AND [ItemAmount] IS NULL) OR ([I" +
                 "temAmount] = @Original_ItemAmount)) AND ((@IsNull_NoOfProducts = 1 AND [NoOfProd" +
-                "ucts] IS NULL) OR ([NoOfProducts] = @Original_NoOfProducts)));\r\nSELECT Id, Purch" +
-                "aseCode, PurchaseDate, LedgerCode, PurchaseType, InvoiceNo, Extra, DiscountAmoun" +
-                "t, Narration, ItemAmount, NoOfProducts FROM PurchaseMaster WHERE (Id = @Id)";
+                "ucts] IS NULL) OR ([NoOfProducts] = @Original_NoOfProducts)));\nSELECT Id, Purcha" +
+                "seCode, PurchaseDate, LedgerCode, PurchaseType, InvoiceNo, Extra, DiscountAmount" +
+                ", Narration, ItemAmount, NoOfProducts FROM PurchaseMaster WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseCode", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

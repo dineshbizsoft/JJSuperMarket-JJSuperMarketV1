@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity.Core;
+using System.Data.Entity.Core.Objects;
 
 namespace JJSuperMarket.Reports
 {
@@ -72,14 +74,14 @@ namespace JJSuperMarket.Reports
                 {
                     try
                     {
-                        var sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x=>new { x.Product.ProductName, x.Sale.SalesDate}).ToList();
+                        var sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x=>new { x.Product.ProductName, x.Sale.SalesDate}).ToList();
                         if (Pcode != 0)
                         {
-                            sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code&&x.Product.ProductId==Pcode).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
+                            sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code&&x.Product.ProductId==Pcode).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
                         }
                         else
                         {
-                            sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
+                            sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
 
                         }
 

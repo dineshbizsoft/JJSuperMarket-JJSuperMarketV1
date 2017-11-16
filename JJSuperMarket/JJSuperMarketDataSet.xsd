@@ -5181,6 +5181,7 @@ SELECT Id, PurchaseCode, PurchaseDate, LedgerCode, PurchaseType, InvoiceNo, Extr
               </xs:element>
               <xs:element name="InvoiceNo" msprop:Generator_ColumnVarNameInTable="columnInvoiceNo" msprop:Generator_ColumnPropNameInRow="InvoiceNo" msprop:Generator_ColumnPropNameInTable="InvoiceNoColumn" msprop:Generator_UserColumnName="InvoiceNo" type="xs:decimal" minOccurs="0" />
               <xs:element name="ItemAmount" msprop:Generator_ColumnVarNameInTable="columnItemAmount" msprop:Generator_ColumnPropNameInRow="ItemAmount" msprop:Generator_ColumnPropNameInTable="ItemAmountColumn" msprop:Generator_UserColumnName="ItemAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -5215,6 +5216,9 @@ SELECT Id, PurchaseCode, PurchaseDate, LedgerCode, PurchaseType, InvoiceNo, Extr
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DisPer" msprop:Generator_ColumnVarNameInTable="columnDisPer" msprop:Generator_ColumnPropNameInRow="DisPer" msprop:Generator_ColumnPropNameInTable="DisPerColumn" msprop:Generator_UserColumnName="DisPer" type="xs:double" minOccurs="0" />
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" type="xs:string" minOccurs="0" />
+              <xs:element name="UOMSymbol" msprop:Generator_ColumnVarNameInTable="columnUOMSymbol" msprop:Generator_ColumnPropNameInRow="UOMSymbol" msprop:Generator_ColumnPropNameInTable="UOMSymbolColumn" msprop:Generator_UserColumnName="UOMSymbol" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
