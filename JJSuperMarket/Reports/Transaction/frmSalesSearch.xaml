@@ -72,7 +72,7 @@
                 </DataGrid.Effect>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Width="50" Binding="{Binding }" Visibility="Hidden" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                    <DataGridTextColumn Header="Date" FontWeight="Bold" Width="150" Binding="{Binding SalesDate,StringFormat=\{0:dd.MM.yyyy\}}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                    <DataGridTextColumn Header="Date" FontWeight="Bold" Width="150" Binding="{Binding SalesDate,StringFormat=\{0:dd.MM.yyyy HH:mm:ss\}}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
                     <DataGridTextColumn Header="Invoice No" FontWeight="Bold" Width="150" Binding="{Binding InvoiceNo  }" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
 
                     <DataGridTextColumn Header="Customer Name" FontWeight="Bold" Width="400" Binding="{Binding Customer.CustomerName}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>

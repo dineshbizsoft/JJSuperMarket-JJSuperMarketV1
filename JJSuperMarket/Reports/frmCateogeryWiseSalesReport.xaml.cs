@@ -40,20 +40,20 @@ namespace JJSuperMarket.Reports
         {
             GId = db.StockGroups.Where(x => x.GroupName.ToLower() == cmbGroupUnder.Text.ToLower()).Select(x => x.StockGroupId).FirstOrDefault();
             LoadReport();
-           
-            cmbGroupUnder.Text = ""; cmbProduct.Text = ""; 
+
+            cmbGroupUnder.Text = ""; cmbProduct.Text = "";
         }
         private async void LoadReport()
         {
             db = new JJSuperMarketEntities();
-            if (!string.IsNullOrWhiteSpace (cmbGroupUnder.Text))
+            if (!string.IsNullOrWhiteSpace(cmbGroupUnder.Text))
             {
                 decimal code;
                 decimal Pcode;
 
-               if (cmbGroupUnder.SelectedValue == null)
+                if (cmbGroupUnder.SelectedValue == null)
                 {
-                    code = db.Products.Where(x => x.StockGroup.GroupName == cmbGroupUnder.Text).Select(x => x.StockGroup.StockGroupId).FirstOrDefault(); 
+                    code = db.Products.Where(x => x.StockGroup.GroupName == cmbGroupUnder.Text).Select(x => x.StockGroup.StockGroupId).FirstOrDefault();
                 }
                 else
                 {
@@ -61,25 +61,60 @@ namespace JJSuperMarket.Reports
                 }
                 if (cmbProduct.SelectedValue == null)
                 {
-                    Pcode = db.Products.Where(x => x.ProductName  == cmbProduct .Text).Select(x => x.ProductId ).FirstOrDefault();
+                    Pcode = db.Products.Where(x => x.ProductName == cmbProduct.Text).Select(x => x.ProductId).FirstOrDefault();
                 }
                 else
                 {
                     Pcode = (decimal)cmbProduct.SelectedValue;
                 }
-                
-                if(code != null || code != 0)
+
+                if (code != null || code != 0)
                 {
-                   
-                    var sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code  ).ToList();
-                    if(Pcode != 0)
+                    try
                     {
-                        sinfo = sinfo.Where(x => x.Product.ProductId == Pcode).ToList();  
+                        var sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x=>new { x.Product.ProductName, x.Sale.SalesDate}).ToList();
+                        if (Pcode != 0)
+                        {
+                            sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code&&x.Product.ProductId==Pcode).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
+                        }
+                        else
+                        {
+                            sinfo = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate.Value <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
+
+                        }
+
+
+                        // var s = sinfo.Select(x => new { Date = string.Format("{0:dd/MM/yy}", x.Sale.SalesDate), ProductName = x.Product.ProductName, Qty = x.Quantity, Amount = (x.DisPer * x.Quantity) }).OrderByDescending(x => x.Date).ToList();
+
+
+                        List<CategorySales> csl = new List<CategorySales>();
+                        CategorySales cs = new Reports.CategorySales();
+                        decimal qty = 0, amt = 0;
+                        foreach (var c in sinfo)
+                        {
+                            cs = new CategorySales();
+                            cs.Amount = (decimal)(c.Sum(x=>x.DisPer * x.Quantity));
+                            cs.Date = string.Format("{0:dd/MM/yy}", c.Key.SalesDate);
+                            cs.ProductName = c.Key.ProductName;
+                            cs.Qty = (decimal)c.Sum(x=>x.Quantity);
+                            csl.Add(cs);
+                            
+                        }
+                        csl = csl.OrderBy(x => x.Date).ToList();
+                        cs = new CategorySales();
+                        cs.ProductName = "Total";
+                        cs.Qty = csl.Sum(x=>x.Qty);
+                        cs.Amount = csl.Sum(x=>x.Amount);
+                        csl.Add(cs);
+                        dgvSaleDetail.ItemsSource = csl;
+
+                    }
+                    catch (Exception ex)
+                    {
+
                     }
 
-                    dgvSaleDetail.ItemsSource = sinfo.Select(x => new { Date = string.Format("{0:dd/MM/yy}", x.Sale.SalesDate), ProductName = x.Product.ProductName, Qty = x.Quantity, Amount = string.Format("{0:N2}", (x.DisPer * x.Quantity)) }).OrderByDescending(x=>x.Date).ToList();
                 }
-                //dgvStockDetails.ItemsSource = StockDetails.GetStockDetails("", dtpFromDate.SelectedDate, dtpToDate.SelectedDate, cmbGroupUnder.Text == "" ? 0 : GId); 
             }
             else
             {
@@ -116,7 +151,7 @@ namespace JJSuperMarket.Reports
             {
 
             }
-          
+
         }
 
         private void cmbProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -131,17 +166,25 @@ namespace JJSuperMarket.Reports
 
 
             }
-         
+
         }
 
         private void txtItemCode_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key==Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 var res = db.Products.Where(x => x.ItemCode == txtItemCode.Text).ToList();
                 cmbProduct.Text = res.Select(x => x.ProductName).FirstOrDefault();
                 cmbGroupUnder.Text = res.Select(x => x.StockGroup.GroupName).FirstOrDefault();
             }
         }
+    }
+
+    public class CategorySales
+    {
+        public string Date { get; set; }
+        public string ProductName { get; set; }
+        public decimal? Qty { get; set; }
+        public decimal? Amount { get; set; }
     }
 }

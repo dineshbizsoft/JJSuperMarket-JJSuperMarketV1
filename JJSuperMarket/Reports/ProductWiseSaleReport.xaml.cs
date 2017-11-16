@@ -41,15 +41,7 @@ namespace JJSuperMarket.Reports
             e.Handled = regex.IsMatch(e.Text);
         }
         #endregion
-        private void dtpFromDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            dtpToDate.DisplayDateStart = dtpFromDate.SelectedDate.Value;
-        }
-
-        private void dtpToDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            dtpFromDate.DisplayDateEnd = dtpToDate.SelectedDate.Value;
-        }
+     
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +60,7 @@ namespace JJSuperMarket.Reports
             if (string.IsNullOrEmpty(cmbProduct.Text))
             {
 
-                var lstSD = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate.Value && x.Sale.SalesDate <= dtpToDate.SelectedDate.Value).ToList();
+                var lstSD = db.SalesDetails.Where(x => x.Sale.SalesDate >= dtpFromDate.SelectedDate && x.Sale.SalesDate <= dtpToDate.SelectedDate).ToList();
                 foreach (var lst in lstSD)
                 {
                     ProductReport p1 = new ProductReport();
@@ -83,7 +75,7 @@ namespace JJSuperMarket.Reports
                     p1.ProfitAmount = (p1.SellingRate - p1.PurchasaRate) * p1.Qty;
                     PRP.Add(p1);
                 }
-                  dgvProductSale.ItemsSource = PRP.OrderBy(x=>x.Invoice) ;
+                  dgvProductSale.ItemsSource = PRP.OrderByDescending(x=>x.SaleDate) ;
                // dgvProductSale.ItemsSource = PRP.OrderBy(x => x.Invoice).GroupBy(x=>x.SaleDate ).Select(x=> new {  Name=x.Sum(y=>y.Qty) });
                 dgvProductSale.Items.Refresh();
 
@@ -107,7 +99,7 @@ namespace JJSuperMarket.Reports
                     p1.ProfitAmount = (p1.SellingRate - p1.PurchasaRate) * p1.Qty;
                     PRP.Add(p1);
                 }
-                dgvProductSale.ItemsSource = PRP.OrderBy(x => x.Invoice) ; 
+                dgvProductSale.ItemsSource = PRP.OrderBy(x => x.SaleDate) ; 
 
                 dgvProductSale.Items.Refresh();
             }

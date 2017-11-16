@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -66,10 +67,10 @@ namespace JJSuperMarket
 
             try
             {
-                var list1 = db.Sales.GroupBy(x => x.SalesDate).OrderByDescending(x => x.Key).Take(30).Select(x => new { SalesDate = x.Key, BillAmount = x.Sum(y => y.ItemAmount) }).ToList();
-                SalesGrid.ItemsSource = list1.Where(x => x.BillAmount != null).Select(x => new { Date = string.Format("{0:dd/MM/yyyy}", x.SalesDate), Amount = string.Format("{0:N2}", x.BillAmount) }).ToList();
+                var list1 = db.Sales.GroupBy(x => EntityFunctions.TruncateTime(x.SalesDate)).OrderByDescending(x => x.Key).Take(30).Select(x => new { SalesDate = x.Key, BillAmount = x.Sum(y => y.ItemAmount) }).ToList();
+                SalesGrid.ItemsSource = list1.Where(x => x.BillAmount != null).Select(x => new { Date = string.Format("{0:dd/MM/yyyy}", x.SalesDate.Value.Date), Amount = string.Format("{0:N2}", x.BillAmount) }).ToList();
                      
-                var count = db.Sales.Where(x => x.SalesDate.Value == dtpDate.SelectedDate.Value).GroupBy(x => x.Customer.CustomerName).OrderBy(x => x.Sum(y => y.ItemAmount)).ToList();
+                var count = db.Sales.Where(x => x.SalesDate.Value.Date == dtpDate.SelectedDate.Value.Date).GroupBy(x => x.Customer.CustomerName).OrderBy(x => x.Sum(y => y.ItemAmount)).ToList();
                 lblName.Content = count.Count().ToString() + " Customer Visited. [Details]";
                 dgvSaleInfo.ItemsSource = count.Select(x => new { CustomerName = x.Key, Amount = string.Format("{0:N2}", x.Sum(y => y.ItemAmount)) }).ToList();
 
@@ -288,11 +289,7 @@ namespace JJSuperMarket
 
         }
 
-        private void dtpSTDate_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
-        {
-
-        }
-
+   
         private void cmbMonths_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             salesTypeReport();

@@ -47,10 +47,7 @@ namespace JJSuperMarket.Transaction
         public void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
-            dtpS.SelectedDate = DateTime.Today;
-
-
-
+            dtpS.SelectedDate = DateTime.UtcNow;
             LoadWindow();
 
         }
@@ -176,7 +173,9 @@ namespace JJSuperMarket.Transaction
                     // p.LedgerCode = Convert.ToDecimal(cmbCustomer.SelectedValue.ToString());
                     p.LedgerCode = db.Customers.Where(x => x.CustomerName == cmbCustomer.Text).Select(x => x.CustomerId).FirstOrDefault();
                     p.Narration = txtNarration.Text;
-                    p.SalesDate = dtpS.SelectedDate;
+                    DateTime date = (DateTime) dtpS.SelectedDate;
+                    DateTime combined = date.Date.Add(DateTime.Now.TimeOfDay);
+                     p.SalesDate = combined;
                     p.ItemAmount = Convert.ToDouble(txtTotal.Text.ToString());
                     p.SalesType = cmbSalesType.Text;
                     p.Narration = txtPaidAmount.Text;

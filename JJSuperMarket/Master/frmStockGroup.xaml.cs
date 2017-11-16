@@ -150,7 +150,7 @@ namespace JJSuperMarket.MasterSetup
                 {
                     var sampleDialog = new SampleDialog
                     {
-                        Message = { Text = "Do you want to delete tis record?.." }
+                        Message = { Text = "Do you want to delete this record?.." }
                     };
 
                     var result = Convert.ToBoolean(await DialogHost.Show(sampleDialog, "RootDialog"));

@@ -58,13 +58,13 @@ namespace JJSuperMarket.Reports.Transaction
 
             if (dtpFromDate.Text != "")
             {
-                DateTime d = Convert.ToDateTime(dtpFromDate.Text);
-                p = db.Sales.Where(x => x.SalesDate >= d).ToList();
+                DateTime d = dtpFromDate.SelectedDate.Value.Date;
+                p = db.Sales.Where(x => x.SalesDate>= d).ToList();
             }
             if (dtpToDate.Text != "")
             {
-                DateTime d = Convert.ToDateTime(dtpToDate.Text);
-                p = p.Where(x => x.SalesDate <= d).ToList();
+                DateTime d = dtpToDate.SelectedDate.Value.Date;
+                p = p.Where(x => x.SalesDate.Value.Date <= d).ToList();
             }
             if (txtBillAmtFrom.Text != "")
             {

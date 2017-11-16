@@ -30,9 +30,9 @@
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1" >
 
-            <DatePicker x:Name="dtpFromDate" materialDesign:HintAssist.Hint="From Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold"  HorizontalAlignment="Center" Margin="16,26,1057,586" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="107" Height="28" SelectedDateChanged="dtpFromDate_SelectedDateChanged"  />
+            <DatePicker x:Name="dtpFromDate" materialDesign:HintAssist.Hint="From Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold"  HorizontalAlignment="Center" Margin="16,26,1057,586" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="107" Height="28"   />
             <TextBlock Text="_" HorizontalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Margin="132,29,1042,586"/>
-            <DatePicker x:Name="dtpToDate" materialDesign:HintAssist.Hint="To Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold"  HorizontalAlignment="Center" Margin="149,26,924,586" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="107" Height="28" SelectedDateChanged="dtpToDate_SelectedDateChanged" />
+            <DatePicker x:Name="dtpToDate" materialDesign:HintAssist.Hint="To Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold"  HorizontalAlignment="Center" Margin="149,26,924,586" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="107" Height="28"  />
             <ComboBox x:Name="cmbGroupUnder" Visibility="Hidden"  FontWeight="Bold" FontSize="14" materialDesign:HintAssist.Hint="Under Group"  IsEditable="True" materialDesign:HintAssist.HintOpacity=".26" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="596,10,0,0" VerticalAlignment="Top" Width="144" RenderTransformOrigin="0.509,8.955" Height="44">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>

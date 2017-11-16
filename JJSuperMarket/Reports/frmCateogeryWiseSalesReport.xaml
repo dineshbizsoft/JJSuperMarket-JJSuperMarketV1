@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
               xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-              Height="650" Width="1200">
+              Height="600" Width="1200" Background="White">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -48,8 +48,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition Height="600"/>
-
         </Grid.RowDefinitions>
+        <Border BorderBrush="Black" Grid.Column="0" BorderThickness="1" Grid.Row="0" Grid.RowSpan="2" />
         <Grid Grid.Row="0" >
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  TextAlignment="Center" FontSize="18" Width="1150"  Height="25" Background="Black" Foreground="White"><Run Text="Category Wise Sales Report"/></TextBlock>
@@ -57,78 +57,65 @@
         </Grid>
         <Grid Grid.Row="1" Margin="0,10,0,-10" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="601"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Margin="0,0,10,10">
-                <DatePicker x:Name="dtpFromDate" materialDesign:HintAssist.Hint="From Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold" Margin="275,46,690,506"/>
-                <DatePicker x:Name="dtpToDate" materialDesign:HintAssist.Hint="To Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold" Margin="490,46,475,506"/>
-                <ComboBox x:Name="cmbGroupUnder" IsEditable="True"   Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" Margin="388,96,577,456" DropDownOpened="cmbGroupUnder_DropDownOpened" Height="39"  >
-                    <materialDesign:HintAssist.Hint>
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CartPlus"  Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="20" Width="30" />
-                            <TextBlock Text="Category"/>
-                        </StackPanel>
-                    </materialDesign:HintAssist.Hint>
-                    <ComboBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel VirtualizingPanel.VirtualizationMode="Recycling" Height="250"/>
-                        </ItemsPanelTemplate>
-                    </ComboBox.ItemsPanel>
-                </ComboBox>
-                <Button x:Name="btnSearch" Content="Search" Height="Auto" Margin="748,123,303,428" Click="btnSearch_Click"/>
-                <ComboBox x:Name="cmbProduct" IsEditable="True"   Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" Margin="275,148,690,404" DropDownOpened="cmbProduct_DropDownOpened" SelectionChanged="cmbProduct_SelectionChanged"   Height="39"  >
-                    <materialDesign:HintAssist.Hint>
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Cart"  Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="20" Width="30" />
-                            <TextBlock Text="Product Name"/>
-                        </StackPanel>
-                    </materialDesign:HintAssist.Hint>
-                    <ComboBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel VirtualizingPanel.VirtualizationMode="Recycling" Height="250"/>
-                        </ItemsPanelTemplate>
-                    </ComboBox.ItemsPanel>
-                </ComboBox>
-                <TextBox  x:Name="txtItemCode" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" Margin="490,148,475,404" Height="39" KeyDown="txtItemCode_KeyDown"  >
-                    <materialDesign:HintAssist.Hint>
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Barcode"  Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="20" Width="30" />
-                            <TextBlock Text="Bar Code"/>
-                        </StackPanel>
-                    </materialDesign:HintAssist.Hint>
-               
-                </TextBox>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="30*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center"  >
+                    <DatePicker x:Name="dtpFromDate" materialDesign:HintAssist.Hint="From Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold"  Margin="10,29,10,10" Width="145"/>
+                    <DatePicker x:Name="dtpToDate" materialDesign:HintAssist.Hint="To Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Bold" Margin="10,29,10,10" Width="148"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center"  >
+                    <ComboBox x:Name="cmbGroupUnder" IsEditable="True"   Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" DropDownOpened="cmbGroupUnder_DropDownOpened" Height="40"  Margin="10,10,10,10" Width="120">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CartPlus"  Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="20" Width="30"  />
+                                <TextBlock Text="Category"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel VirtualizingPanel.VirtualizationMode="Recycling" Height="250"/>
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                    <ComboBox x:Name="cmbProduct" IsEditable="True"   Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold"  DropDownOpened="cmbProduct_DropDownOpened" SelectionChanged="cmbProduct_SelectionChanged"   Height="40"  Margin="10">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Cart"  Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="20" Width="30" />
+                                <TextBlock Text="Product Name"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel VirtualizingPanel.VirtualizationMode="Recycling" Height="250"/>
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                    <TextBox  x:Name="txtItemCode" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold"  Height="40" Width="150" KeyDown="txtItemCode_KeyDown"   Margin="10">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Barcode"  Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="20" Width="30" />
+                                <TextBlock Text="Bar Code"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
 
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+                    <Button x:Name="btnSearch" Content="Search" Height="Auto"  Click="btnSearch_Click"  Margin="10"/>
+                </StackPanel>
             </Grid>
-            <Grid Margin="0,201,0,0"/>
-            <TabControl Margin="0,201,0,0"  Custom:TabControlHelper.IsUnderlined="True">
-                <!--<TabItem Header="Stock Detail" FontSize="16" Margin="0,0,-7,0" Visibility="Collapsed"  >
-                    <DataGrid x:Name="dgvStockDetails" BorderThickness="1.2" Visibility="Collapsed"  HorizontalAlignment="Center" VerticalAlignment="Center"   CanUserSortColumns="True"  AutoGenerateColumns="False" BorderBrush="Black" Margin="42,0,99,0" Height="319" Width="1004"  >
-
-                        <DataGrid.ColumnHeaderStyle>
-                            <Style TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="FontWeight" Value="Bold" />
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            </Style>
-                        </DataGrid.ColumnHeaderStyle>
-
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Product " FontWeight="Bold" Width="200" Binding="{Binding ProductName}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                            <DataGridTextColumn Header="OP.Qty" FontWeight="Bold" Width="200" Binding="{Binding OpQty}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                            <DataGridTextColumn Header="Inwards" FontWeight="Bold" Width="200" Binding="{Binding Inwards}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                            <DataGridTextColumn Header="Outwards" FontWeight="Bold" Width="200" Binding="{Binding Outwards}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                            <DataGridTextColumn Header="Cl.Stock" FontWeight="Bold" Width="200" Binding="{Binding ClStock}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem>-->
-                <TabItem Header="Sales Details" FontSize=" 16" Margin="18,0,-29,0">
-                    <DataGrid x:Name="dgvSaleDetail" BorderThickness=" 1.5" />
-                </TabItem>
-
-            </TabControl>
-
-
+            <Grid  Grid.Row="1">
+                <DataGrid x:Name="dgvSaleDetail" BorderThickness="1" BorderBrush="Black" Margin="35,30,30,75"/>
+            </Grid>
         </Grid>
     </Grid>
+
+
 </UserControl>

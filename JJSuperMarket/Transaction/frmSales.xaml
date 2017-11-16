@@ -19,9 +19,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2" />
         <!--#region Form Head -->
         <Grid Grid.Row="0" Background="{DynamicResource bgFormHead}">
-
-
-            <DatePicker x:Name="dtpS" Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" Margin="13,-1,832,1" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="155" Height="25"/>
+            <DatePicker x:Name="dtpS" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" Margin="13,-1,832,1" VerticalAlignment="Center" RenderTransformOrigin="-3.571,1" Width="155" Height="25"/>
             <TextBlock Foreground="{DynamicResource fgFormHead}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{DynamicResource ftfFormHead}" FontSize="{DynamicResource fnsFormHead}" Height="26" Margin="460,-2,482,1" Width="58"><Run Text="Sales"/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Foreground="White" Visibility="Hidden" VerticalAlignment="Center"  TextAlignment="Center" FontSize="18" Width="110" Height="32"  RenderTransformOrigin="0.5,0.5" Text="Invoice No:" Margin="705,0,285,6"/>
             <TextBlock x:Name="txtInNo" Foreground="White" Text="1" Visibility="Hidden"  FontWeight="Bold" FontSize="14" RenderTransformOrigin="0.467,0.2" Margin="810,0,245,13" />
