@@ -18,7 +18,7 @@
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <GroupBox  Width="350" Height="280" FontWeight="Bold"  Header="Datewise Monthly Sales Report" Margin="10">
+            <GroupBox  Width="350"  Height="280" FontWeight="Bold"  Header="Datewise Monthly Sales Report" Margin="10">
                 <Grid>
                     <DataGrid Name="SalesGrid" CanUserSortColumns="False"/>
                 </Grid>
