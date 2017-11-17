@@ -43,7 +43,7 @@ namespace JJSuperMarket.Reports
             GId = db.StockGroups.Where(x => x.GroupName.ToLower() == cmbGroupUnder.Text.ToLower()).Select(x => x.StockGroupId).FirstOrDefault();
             LoadReport();
 
-            cmbGroupUnder.Text = ""; cmbProduct.Text = "";
+           // cmbGroupUnder.Text = ""; cmbProduct.Text = "";
         }
         private async void LoadReport()
         {
