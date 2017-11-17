@@ -224,6 +224,7 @@ namespace JJSuperMarket
             {
                 c = new CategoryList();
                 c.Category = d.Key.GroupName;
+                c.Qty = string.Format("{0:N2}", d.Sum(y => y.Quantity));
                 c.Amount = d.Sum(y => y.DisPer * y.Quantity) == null ? 0 : (decimal)d.Sum(y => y.DisPer * y.Quantity);
 
                 if (c.Amount != null || c.Amount != 0) lst.Add(c);
