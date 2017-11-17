@@ -74,15 +74,14 @@ namespace JJSuperMarket.Reports
                 {
                     try
                     {
-                        var sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x=>new { x.Product.ProductName, x.Sale.SalesDate}).ToList();
+                        var sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x=>new { x.Product.ProductName,Date=EntityFunctions.TruncateTime(x.Sale.SalesDate)}).ToList();
                         if (Pcode != 0)
                         {
-                            sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code&&x.Product.ProductId==Pcode).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
+                            sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code&&x.Product.ProductId==Pcode).GroupBy(x => new { x.Product.ProductName, Date = EntityFunctions.TruncateTime(x.Sale.SalesDate) }).ToList();
                         }
                         else
                         {
-                            sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x => new { x.Product.ProductName, x.Sale.SalesDate }).ToList();
-
+                            sinfo = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) >= dtpFromDate.SelectedDate.Value && EntityFunctions.TruncateTime(x.Sale.SalesDate.Value) <= dtpToDate.SelectedDate.Value && x.Product.GroupCode == code).GroupBy(x => new { x.Product.ProductName, Date = EntityFunctions.TruncateTime(x.Sale.SalesDate) }).ToList();
                         }
 
 
@@ -96,7 +95,7 @@ namespace JJSuperMarket.Reports
                         {
                             cs = new CategorySales();
                             cs.Amount = (decimal)(c.Sum(x=>x.DisPer * x.Quantity));
-                            cs.Date = string.Format("{0:dd/MM/yy}", c.Key.SalesDate);
+                            cs.Date = string.Format("{0:dd/MM/yy}", c.Key.Date);
                             cs.ProductName = c.Key.ProductName;
                             cs.Qty = (decimal)c.Sum(x=>x.Quantity);
                             csl.Add(cs);
