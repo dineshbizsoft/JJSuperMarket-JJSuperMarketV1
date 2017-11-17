@@ -63,7 +63,7 @@ namespace JJSuperMarket
 
 
         }
-   
+
         private void dtpCDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -219,12 +219,11 @@ namespace JJSuperMarket
             List<CategoryList> lst = new List<CategoryList>();
             CategoryList c = new CategoryList();
             var salesList = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) == dtpCDate.SelectedDate.Value)
-                 .GroupBy(x => new {SalesDate= EntityFunctions.TruncateTime(x.Sale.SalesDate), x.Product.StockGroup.GroupName }).ToList();
+                 .GroupBy(x => new { SalesDate = EntityFunctions.TruncateTime(x.Sale.SalesDate), x.Product.StockGroup.GroupName }).ToList();
             foreach (var d in salesList)
             {
                 c = new CategoryList();
                 c.Category = d.Key.GroupName;
-                c.Qty = string.Format("{0:N2}", d.Sum(y => y.Quantity));
                 c.Amount = d.Sum(y => y.DisPer * y.Quantity) == null ? 0 : (decimal)d.Sum(y => y.DisPer * y.Quantity);
 
                 if (c.Amount != null || c.Amount != 0) lst.Add(c);
