@@ -42,7 +42,25 @@ namespace JJSuperMarket.Reports
                         var Pay = db.PaymentMasters.Where(x => x.SupplierId == supl.Supplier.SupplierId).ToList();
 
                         SupplierDueReport c1 = new SupplierDueReport();
-                        c1.SupplierName = supl.Supplier.SupplierName;
+                        c1.SupplierName = supl.Supplier.LedgerName;
+                        // c1.DueDate = String.Format("{0:dd-MM-yyyy}", (cust.Date.Value == null ? DateTime.Today : cust.Date.Value.AddDays(cust.Supplier.CreditDays == null ? 0 : (double)cust.Supplier.CreditDays.Value)));
+
+                        c1.Amount = Convert.ToDecimal(string.Format("{0:N2}", supl.ItemAmount.Value));
+                        c1.PaidAmount = Pay == null ? 0 : Convert.ToDecimal(string.Format("{0:N2}", Pay.Where(x => x.PurchaseId == supl.InvoiceNo).Sum(x => x.PayAmount).Value));
+                        c1.Balance = Convert.ToDecimal(string.Format("{0:N2}", c1.Amount - c1.PaidAmount));
+
+                        c1.PDate = string.Format("{0:dd-MM-yyyy}", supl.PurchaseDate);
+                        c1.PInvoiceNo = String.Format("PINV {0}", supl.InvoiceNo);
+                        //c1.IsOverdue = (DateTime.Now - cust.Date.Value.AddDays((double)(cust.Supplier.CreditDays == null ? 0 : cust.Supplier.CreditDays.Value))).TotalDays > 0; ;
+                        if (c1.Balance > 0) Suplist.Add(c1);
+
+                    }
+                    foreach (var supl in db.PurchaseMasters.Where(x => x.LedgerCode == sam.SupplierId && x.PurchaseType == "Credit").ToList())
+                    {
+                        var Pay = db.PaymentMasters.Where(x => x.SupplierId == supl.Supplier.SupplierId).ToList();
+
+                        SupplierDueReport c1 = new SupplierDueReport();
+                        c1.SupplierName = supl.Supplier.LedgerName;
                         // c1.DueDate = String.Format("{0:dd-MM-yyyy}", (cust.Date.Value == null ? DateTime.Today : cust.Date.Value.AddDays(cust.Supplier.CreditDays == null ? 0 : (double)cust.Supplier.CreditDays.Value)));
 
                         c1.Amount = Convert.ToDecimal(string.Format("{0:N2}", supl.ItemAmount.Value));
