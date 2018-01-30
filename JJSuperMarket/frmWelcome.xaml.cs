@@ -114,7 +114,7 @@ namespace JJSuperMarket
                 np = new NetProfit();
                 np.Date = string.Format("{0:dd/MM/yyyy}", startDate.AddDays(i).Date);
                 DateTime dtFrom = startDate.AddDays(i);
-                var l = db.SalesDetails.Where(x => x.Sale.SalesDate == dtFrom).GroupBy(x => x.Product.ProductName);
+                var l = db.SalesDetails.Where(x => EntityFunctions.TruncateTime(x.Sale.SalesDate) == dtFrom).GroupBy(x => x.Product.ProductName);
                 foreach (var pro in l)
                 {
                     double amt = (double)pro.Sum(x => x.Quantity) * pro.Select(x => x.Product.PurchaseRate).FirstOrDefault().Value;
@@ -128,7 +128,7 @@ namespace JJSuperMarket
                 }
                 np.Qty = Qty;
                 np.PurRate = pAmt == null ? 0 : (double)pAmt;
-                sAmt = db.Sales.Where(x => x.SalesDate == dtFrom).Sum(x => x.ItemAmount);
+                sAmt = db.Sales.Where(x => EntityFunctions.TruncateTime(x.SalesDate) == dtFrom).Sum(x => x.ItemAmount);
                 np.SelRate = sAmt == null ? 0 : (double)sAmt;
                 if (np.PurRate != 0 || np.SelRate != 0)
                 {
@@ -152,7 +152,7 @@ namespace JJSuperMarket
 
         private void LoadMonth()
         {
-            DateTime m = Convert.ToDateTime("1/1/2017");
+            DateTime m = Convert.ToDateTime("1/1/2018");
             List<GetMonthList> month = new List<GetMonthList>();
             GetMonthList g = new GetMonthList();
             for (int i = 0; i < 12; i++)
