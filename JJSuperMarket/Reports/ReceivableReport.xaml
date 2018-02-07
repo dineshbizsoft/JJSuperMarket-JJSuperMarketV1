@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
-                <GroupBox x:Name="grbCustomer" Header="Customoer[ Sales Report ]" Grid.Column="0">
+                <GroupBox x:Name="grbCustomer" Header="Customer[ Sales Report ]" Grid.Column="0">
                     <DataGrid x:Name="dgvReceivableCustomer"/>
                 </GroupBox>
                 <GroupBox x:Name="grbSupplier" Header="Supplier[ Purchase Return Report ]" Grid.Column="1">

@@ -176,7 +176,7 @@
                                             <Reports:frmCateogeryWiseSalesReport></Reports:frmCateogeryWiseSalesReport>
                                         </domain:DemoItem.Content>
                                     </domain:DemoItem>
-                                    <domain:DemoItem Name="ReorderLevel Report">
+                                    <domain:DemoItem Name="Reorder Level Report">
                                         <domain:DemoItem.Content>
                                             <Reports:frmReOrderLevel></Reports:frmReOrderLevel>
                                         </domain:DemoItem.Content>
@@ -186,7 +186,7 @@
                                             <Reports:PayableReport ></Reports:PayableReport>
                                         </domain:DemoItem.Content>
                                     </domain:DemoItem>
-                                    <domain:DemoItem Name="Recievable">
+                                    <domain:DemoItem Name="Receivable">
                                         <domain:DemoItem.Content>
                                             <Reports:ReceivableReport ></Reports:ReceivableReport>
                                         </domain:DemoItem.Content>
