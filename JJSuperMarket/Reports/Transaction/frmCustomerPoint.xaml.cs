@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,13 +45,10 @@ namespace JJSuperMarket.Reports.Transaction
             List<CustomerPoints> CusPoint = new List<CustomerPoints>();
             foreach (var Cus in cmbSupplier.Text==""? db.Customers.ToList():db.Customers.Where(x=>x.CustomerName==cmbSupplier.Text).ToList())
             {
-                 
-
-
                     CustomerPoints c1 = new CustomerPoints();
                 // c1.Date =  Convert.ToDateTime( Cus.Sales.Select(x=>x.SalesDate.Value));
                     c1.CustomerName = Cus.CustomerName;
-                    c1.ItemAmount = Convert.ToDecimal(string.Format("{0:N2}",  Cus.Sales.Sum(x=>x.ItemAmount)));
+                    c1.Amount = Convert.ToDecimal(string.Format("{0:N2}",  Cus.Sales.Sum(x=>x.ItemAmount)));
                 var d = Math.Abs((decimal)(Cus.Sales.Sum(x => x.ItemAmount)- Cus.Sales.Sum(x => x.ItemAmount) * 0.01));
                 var Amt1 =(double)Cus.Sales.Where(x => x.SalesType != "Redeem").Sum(x => x.ItemAmount)*0.01 ;
                 var Amt2 = (double)Cus.Sales.Where(x => x.SalesType == "Redeem").Sum(x => x.ItemAmount);
@@ -60,13 +58,35 @@ namespace JJSuperMarket.Reports.Transaction
                 
             }
             dgvDetails.ItemsSource = CusPoint.OrderByDescending(x=>x.Points).ToList();
-           // txtTotalAmount.Text = CusPoint.Where(x=>x.CustomerName==cmbSupplier.Text).Select(x => x.Points).ToString();
+            LoadReport();
+            
+            // txtTotalAmount.Text = CusPoint.Where(x=>x.CustomerName==cmbSupplier.Text).Select(x => x.Points).ToString();
         }
+
+        public void LoadReport()
+        {
+            try
+            {
+                rptViewer.Reset();
+                var s=dgvDetails.ItemsSource as List<CustomerPoints>;
+                ReportDataSource data = new ReportDataSource("CustomerPoints", s);
+                 rptViewer.LocalReport.DataSources.Add(data);
+                
+                rptViewer.LocalReport.ReportEmbeddedResource = "JJSuperMarket.Reports.rptCustomerPoints.rdlc";
+                
+                rptViewer.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
         class CustomerPoints
         {    
-            public DateTime Date { get; set; }
+            //public DateTime Date { get; set; }
             public string CustomerName { get; set; }
-            public decimal ItemAmount { get; set; }
+            public decimal Amount { get; set; }
             public decimal Points { get; set; }
         }
     }
